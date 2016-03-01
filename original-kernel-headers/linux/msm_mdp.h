@@ -1,5 +1,5 @@
-#ifndef _MSM_MDP_H_
-#define _MSM_MDP_H_
+#ifndef _UAPI_MSM_MDP_H_
+#define _UAPI_MSM_MDP_H_
 
 #include <linux/types.h>
 #include <linux/fb.h>
@@ -70,6 +70,7 @@
 #define MSMFB_LPM_ENABLE	_IOWR(MSMFB_IOCTL_MAGIC, 170, unsigned int)
 #define MSMFB_MDP_PP_GET_FEATURE_VERSION _IOWR(MSMFB_IOCTL_MAGIC, 171, \
 					      struct mdp_pp_feature_version)
+#define MSMFB_SET_PERSISTENCE_MODE	_IOWR(MSMFB_IOCTL_MAGIC, 171, unsigned int)
 
 #define FB_TYPE_3D_PANEL 0x10101010
 #define MDP_IMGTYPE2_START 0x10000
@@ -108,6 +109,8 @@
 #define MDSS_MDP_HW_REV_200	MDSS_MDP_REV(2, 0, 0) /* 8092 v1.0 */
 #define MDSS_MDP_HW_REV_112	MDSS_MDP_REV(1, 12, 0) /* 8952 v1.0 */
 #define MDSS_MDP_HW_REV_114	MDSS_MDP_REV(1, 14, 0) /* 8937 v1.0 */
+#define MDSS_MDP_HW_REV_115	MDSS_MDP_REV(1, 15, 0) /* msmgold */
+#define MDSS_MDP_HW_REV_116	MDSS_MDP_REV(1, 16, 0) /* msmtitanium */
 
 enum {
 	NOTIFY_UPDATE_INIT,
@@ -307,7 +310,7 @@ struct mdp_csc {
  * to include
  */
 
-#define MDP_BLIT_REQ_VERSION 2
+#define MDP_BLIT_REQ_VERSION 3
 
 struct color {
 	uint32_t r;
@@ -327,6 +330,7 @@ struct mdp_blit_req {
 	uint32_t flags;
 	int sharpening_strength;  /* -127 <--> 127, default 64 */
 	uint8_t color_space;
+	uint32_t fps;
 };
 
 struct mdp_blit_req_list {
@@ -1367,4 +1371,4 @@ struct mdp_pp_feature_version {
 	uint32_t pp_feature;
 	uint32_t version_info;
 };
-#endif /* _MSM_MDP_H_*/
+#endif /*_UAPI_MSM_MDP_H_*/
