@@ -1,5 +1,5 @@
-#ifndef _QSEECOM_H_
-#define _QSEECOM_H_
+#ifndef _UAPI_QSEECOM_H_
+#define _UAPI_QSEECOM_H_
 
 #include <linux/types.h>
 #include <linux/ioctl.h>
@@ -233,6 +233,24 @@ struct qseecom_sg_entry_64bit {
 	uint32_t len;
 } __attribute__ ((packed));
 
+/*
+ * sg list buf format version
+ * 1: Legacy format to support only 512 SG list entries
+ * 2: new format to support > 512 entries
+ */
+#define QSEECOM_SG_LIST_BUF_FORMAT_VERSION_1	1
+#define QSEECOM_SG_LIST_BUF_FORMAT_VERSION_2	2
+
+struct qseecom_sg_list_buf_hdr_64bit {
+	struct qseecom_sg_entry_64bit  blank_entry;	/* must be all 0 */
+	uint32_t version;		/* sg list buf format version */
+	uint64_t new_buf_phys_addr;	/* PA of new buffer */
+	uint32_t nents_total;		/* Total number of SG entries */
+} __attribute__ ((packed));
+
+#define QSEECOM_SG_LIST_BUF_HDR_SZ_64BIT	\
+			sizeof(struct qseecom_sg_list_buf_hdr_64bit)
+
 #define MAX_CE_PIPE_PAIR_PER_UNIT 3
 #define INVALID_CE_INFO_UNIT_NUM 0xffffffff
 
@@ -365,4 +383,4 @@ extern long qseecom_ioctl(struct file *file,
 	_IOWR(QSEECOM_IOC_MAGIC, 42, struct qseecom_ce_info_req)
 
 
-#endif /* _QSEECOM_H_ */
+#endif /* _UAPI_QSEECOM_H_ */

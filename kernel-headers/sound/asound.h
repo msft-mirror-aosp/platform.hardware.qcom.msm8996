@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __SOUND_ASOUND_H
-#define __SOUND_ASOUND_H
+#ifndef _UAPI__SOUND_ASOUND_H
+#define _UAPI__SOUND_ASOUND_H
 #include <linux/types.h>
 #define SNDRV_PROTOCOL_VERSION(major,minor,subminor) (((major) << 16) | ((minor) << 8) | (subminor))
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -99,7 +99,7 @@ struct snd_hwdep_dsp_status {
 struct snd_hwdep_dsp_image {
   unsigned int index;
   unsigned char name[64];
-  unsigned char * image;
+  unsigned char __user * image;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   size_t length;
   unsigned long driver_data;
@@ -136,73 +136,73 @@ enum {
 };
 typedef int __bitwise snd_pcm_access_t;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_ACCESS_MMAP_INTERLEAVED ((snd_pcm_access_t) 0)
-#define SNDRV_PCM_ACCESS_MMAP_NONINTERLEAVED ((snd_pcm_access_t) 1)
-#define SNDRV_PCM_ACCESS_MMAP_COMPLEX ((snd_pcm_access_t) 2)
-#define SNDRV_PCM_ACCESS_RW_INTERLEAVED ((snd_pcm_access_t) 3)
+#define SNDRV_PCM_ACCESS_MMAP_INTERLEAVED ((__force snd_pcm_access_t) 0)
+#define SNDRV_PCM_ACCESS_MMAP_NONINTERLEAVED ((__force snd_pcm_access_t) 1)
+#define SNDRV_PCM_ACCESS_MMAP_COMPLEX ((__force snd_pcm_access_t) 2)
+#define SNDRV_PCM_ACCESS_RW_INTERLEAVED ((__force snd_pcm_access_t) 3)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_ACCESS_RW_NONINTERLEAVED ((snd_pcm_access_t) 4)
+#define SNDRV_PCM_ACCESS_RW_NONINTERLEAVED ((__force snd_pcm_access_t) 4)
 #define SNDRV_PCM_ACCESS_LAST SNDRV_PCM_ACCESS_RW_NONINTERLEAVED
 typedef int __bitwise snd_pcm_format_t;
-#define SNDRV_PCM_FORMAT_S8 ((snd_pcm_format_t) 0)
+#define SNDRV_PCM_FORMAT_S8 ((__force snd_pcm_format_t) 0)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_U8 ((snd_pcm_format_t) 1)
-#define SNDRV_PCM_FORMAT_S16_LE ((snd_pcm_format_t) 2)
-#define SNDRV_PCM_FORMAT_S16_BE ((snd_pcm_format_t) 3)
-#define SNDRV_PCM_FORMAT_U16_LE ((snd_pcm_format_t) 4)
+#define SNDRV_PCM_FORMAT_U8 ((__force snd_pcm_format_t) 1)
+#define SNDRV_PCM_FORMAT_S16_LE ((__force snd_pcm_format_t) 2)
+#define SNDRV_PCM_FORMAT_S16_BE ((__force snd_pcm_format_t) 3)
+#define SNDRV_PCM_FORMAT_U16_LE ((__force snd_pcm_format_t) 4)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_U16_BE ((snd_pcm_format_t) 5)
-#define SNDRV_PCM_FORMAT_S24_LE ((snd_pcm_format_t) 6)
-#define SNDRV_PCM_FORMAT_S24_BE ((snd_pcm_format_t) 7)
-#define SNDRV_PCM_FORMAT_U24_LE ((snd_pcm_format_t) 8)
+#define SNDRV_PCM_FORMAT_U16_BE ((__force snd_pcm_format_t) 5)
+#define SNDRV_PCM_FORMAT_S24_LE ((__force snd_pcm_format_t) 6)
+#define SNDRV_PCM_FORMAT_S24_BE ((__force snd_pcm_format_t) 7)
+#define SNDRV_PCM_FORMAT_U24_LE ((__force snd_pcm_format_t) 8)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_U24_BE ((snd_pcm_format_t) 9)
-#define SNDRV_PCM_FORMAT_S32_LE ((snd_pcm_format_t) 10)
-#define SNDRV_PCM_FORMAT_S32_BE ((snd_pcm_format_t) 11)
-#define SNDRV_PCM_FORMAT_U32_LE ((snd_pcm_format_t) 12)
+#define SNDRV_PCM_FORMAT_U24_BE ((__force snd_pcm_format_t) 9)
+#define SNDRV_PCM_FORMAT_S32_LE ((__force snd_pcm_format_t) 10)
+#define SNDRV_PCM_FORMAT_S32_BE ((__force snd_pcm_format_t) 11)
+#define SNDRV_PCM_FORMAT_U32_LE ((__force snd_pcm_format_t) 12)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_U32_BE ((snd_pcm_format_t) 13)
-#define SNDRV_PCM_FORMAT_FLOAT_LE ((snd_pcm_format_t) 14)
-#define SNDRV_PCM_FORMAT_FLOAT_BE ((snd_pcm_format_t) 15)
-#define SNDRV_PCM_FORMAT_FLOAT64_LE ((snd_pcm_format_t) 16)
+#define SNDRV_PCM_FORMAT_U32_BE ((__force snd_pcm_format_t) 13)
+#define SNDRV_PCM_FORMAT_FLOAT_LE ((__force snd_pcm_format_t) 14)
+#define SNDRV_PCM_FORMAT_FLOAT_BE ((__force snd_pcm_format_t) 15)
+#define SNDRV_PCM_FORMAT_FLOAT64_LE ((__force snd_pcm_format_t) 16)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_FLOAT64_BE ((snd_pcm_format_t) 17)
-#define SNDRV_PCM_FORMAT_IEC958_SUBFRAME_LE ((snd_pcm_format_t) 18)
-#define SNDRV_PCM_FORMAT_IEC958_SUBFRAME_BE ((snd_pcm_format_t) 19)
-#define SNDRV_PCM_FORMAT_MU_LAW ((snd_pcm_format_t) 20)
+#define SNDRV_PCM_FORMAT_FLOAT64_BE ((__force snd_pcm_format_t) 17)
+#define SNDRV_PCM_FORMAT_IEC958_SUBFRAME_LE ((__force snd_pcm_format_t) 18)
+#define SNDRV_PCM_FORMAT_IEC958_SUBFRAME_BE ((__force snd_pcm_format_t) 19)
+#define SNDRV_PCM_FORMAT_MU_LAW ((__force snd_pcm_format_t) 20)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_A_LAW ((snd_pcm_format_t) 21)
-#define SNDRV_PCM_FORMAT_IMA_ADPCM ((snd_pcm_format_t) 22)
-#define SNDRV_PCM_FORMAT_MPEG ((snd_pcm_format_t) 23)
-#define SNDRV_PCM_FORMAT_GSM ((snd_pcm_format_t) 24)
+#define SNDRV_PCM_FORMAT_A_LAW ((__force snd_pcm_format_t) 21)
+#define SNDRV_PCM_FORMAT_IMA_ADPCM ((__force snd_pcm_format_t) 22)
+#define SNDRV_PCM_FORMAT_MPEG ((__force snd_pcm_format_t) 23)
+#define SNDRV_PCM_FORMAT_GSM ((__force snd_pcm_format_t) 24)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_SPECIAL ((snd_pcm_format_t) 31)
-#define SNDRV_PCM_FORMAT_S24_3LE ((snd_pcm_format_t) 32)
-#define SNDRV_PCM_FORMAT_S24_3BE ((snd_pcm_format_t) 33)
-#define SNDRV_PCM_FORMAT_U24_3LE ((snd_pcm_format_t) 34)
+#define SNDRV_PCM_FORMAT_SPECIAL ((__force snd_pcm_format_t) 31)
+#define SNDRV_PCM_FORMAT_S24_3LE ((__force snd_pcm_format_t) 32)
+#define SNDRV_PCM_FORMAT_S24_3BE ((__force snd_pcm_format_t) 33)
+#define SNDRV_PCM_FORMAT_U24_3LE ((__force snd_pcm_format_t) 34)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_U24_3BE ((snd_pcm_format_t) 35)
-#define SNDRV_PCM_FORMAT_S20_3LE ((snd_pcm_format_t) 36)
-#define SNDRV_PCM_FORMAT_S20_3BE ((snd_pcm_format_t) 37)
-#define SNDRV_PCM_FORMAT_U20_3LE ((snd_pcm_format_t) 38)
+#define SNDRV_PCM_FORMAT_U24_3BE ((__force snd_pcm_format_t) 35)
+#define SNDRV_PCM_FORMAT_S20_3LE ((__force snd_pcm_format_t) 36)
+#define SNDRV_PCM_FORMAT_S20_3BE ((__force snd_pcm_format_t) 37)
+#define SNDRV_PCM_FORMAT_U20_3LE ((__force snd_pcm_format_t) 38)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_U20_3BE ((snd_pcm_format_t) 39)
-#define SNDRV_PCM_FORMAT_S18_3LE ((snd_pcm_format_t) 40)
-#define SNDRV_PCM_FORMAT_S18_3BE ((snd_pcm_format_t) 41)
-#define SNDRV_PCM_FORMAT_U18_3LE ((snd_pcm_format_t) 42)
+#define SNDRV_PCM_FORMAT_U20_3BE ((__force snd_pcm_format_t) 39)
+#define SNDRV_PCM_FORMAT_S18_3LE ((__force snd_pcm_format_t) 40)
+#define SNDRV_PCM_FORMAT_S18_3BE ((__force snd_pcm_format_t) 41)
+#define SNDRV_PCM_FORMAT_U18_3LE ((__force snd_pcm_format_t) 42)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_U18_3BE ((snd_pcm_format_t) 43)
-#define SNDRV_PCM_FORMAT_G723_24 ((snd_pcm_format_t) 44)
-#define SNDRV_PCM_FORMAT_G723_24_1B ((snd_pcm_format_t) 45)
-#define SNDRV_PCM_FORMAT_G723_40 ((snd_pcm_format_t) 46)
+#define SNDRV_PCM_FORMAT_U18_3BE ((__force snd_pcm_format_t) 43)
+#define SNDRV_PCM_FORMAT_G723_24 ((__force snd_pcm_format_t) 44)
+#define SNDRV_PCM_FORMAT_G723_24_1B ((__force snd_pcm_format_t) 45)
+#define SNDRV_PCM_FORMAT_G723_40 ((__force snd_pcm_format_t) 46)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_G723_40_1B ((snd_pcm_format_t) 47)
-#define SNDRV_PCM_FORMAT_DSD_U8 ((snd_pcm_format_t) 48)
-#define SNDRV_PCM_FORMAT_DSD_U16_LE ((snd_pcm_format_t) 49)
-#define SNDRV_PCM_FORMAT_DSD_U32_LE ((snd_pcm_format_t) 50)
+#define SNDRV_PCM_FORMAT_G723_40_1B ((__force snd_pcm_format_t) 47)
+#define SNDRV_PCM_FORMAT_DSD_U8 ((__force snd_pcm_format_t) 48)
+#define SNDRV_PCM_FORMAT_DSD_U16_LE ((__force snd_pcm_format_t) 49)
+#define SNDRV_PCM_FORMAT_DSD_U32_LE ((__force snd_pcm_format_t) 50)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_FORMAT_DSD_U16_BE ((snd_pcm_format_t) 51)
-#define SNDRV_PCM_FORMAT_DSD_U32_BE ((snd_pcm_format_t) 52)
+#define SNDRV_PCM_FORMAT_DSD_U16_BE ((__force snd_pcm_format_t) 51)
+#define SNDRV_PCM_FORMAT_DSD_U32_BE ((__force snd_pcm_format_t) 52)
 #define SNDRV_PCM_FORMAT_LAST SNDRV_PCM_FORMAT_DSD_U32_BE
 #ifdef SNDRV_LITTLE_ENDIAN
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -233,7 +233,7 @@ typedef int __bitwise snd_pcm_format_t;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #endif
 typedef int __bitwise snd_pcm_subformat_t;
-#define SNDRV_PCM_SUBFORMAT_STD ((snd_pcm_subformat_t) 0)
+#define SNDRV_PCM_SUBFORMAT_STD ((__force snd_pcm_subformat_t) 0)
 #define SNDRV_PCM_SUBFORMAT_LAST SNDRV_PCM_SUBFORMAT_STD
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SNDRV_PCM_INFO_MMAP 0x00000001
@@ -258,17 +258,17 @@ typedef int __bitwise snd_pcm_subformat_t;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SNDRV_PCM_INFO_FIFO_IN_FRAMES 0x80000000
 typedef int __bitwise snd_pcm_state_t;
-#define SNDRV_PCM_STATE_OPEN ((snd_pcm_state_t) 0)
-#define SNDRV_PCM_STATE_SETUP ((snd_pcm_state_t) 1)
+#define SNDRV_PCM_STATE_OPEN ((__force snd_pcm_state_t) 0)
+#define SNDRV_PCM_STATE_SETUP ((__force snd_pcm_state_t) 1)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_STATE_PREPARED ((snd_pcm_state_t) 2)
-#define SNDRV_PCM_STATE_RUNNING ((snd_pcm_state_t) 3)
-#define SNDRV_PCM_STATE_XRUN ((snd_pcm_state_t) 4)
-#define SNDRV_PCM_STATE_DRAINING ((snd_pcm_state_t) 5)
+#define SNDRV_PCM_STATE_PREPARED ((__force snd_pcm_state_t) 2)
+#define SNDRV_PCM_STATE_RUNNING ((__force snd_pcm_state_t) 3)
+#define SNDRV_PCM_STATE_XRUN ((__force snd_pcm_state_t) 4)
+#define SNDRV_PCM_STATE_DRAINING ((__force snd_pcm_state_t) 5)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_PCM_STATE_PAUSED ((snd_pcm_state_t) 6)
-#define SNDRV_PCM_STATE_SUSPENDED ((snd_pcm_state_t) 7)
-#define SNDRV_PCM_STATE_DISCONNECTED ((snd_pcm_state_t) 8)
+#define SNDRV_PCM_STATE_PAUSED ((__force snd_pcm_state_t) 6)
+#define SNDRV_PCM_STATE_SUSPENDED ((__force snd_pcm_state_t) 7)
+#define SNDRV_PCM_STATE_DISCONNECTED ((__force snd_pcm_state_t) 8)
 #define SNDRV_PCM_STATE_LAST SNDRV_PCM_STATE_DISCONNECTED
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum {
@@ -446,13 +446,13 @@ struct snd_pcm_sync_ptr {
 struct snd_xferi {
   snd_pcm_sframes_t result;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  void * buf;
+  void __user * buf;
   snd_pcm_uframes_t frames;
 };
 struct snd_xfern {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   snd_pcm_sframes_t result;
-  void * * bufs;
+  void __user * __user * bufs;
   snd_pcm_uframes_t frames;
 };
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -779,26 +779,26 @@ struct snd_ctl_card_info {
   unsigned char components[128];
 };
 typedef int __bitwise snd_ctl_elem_type_t;
-#define SNDRV_CTL_ELEM_TYPE_NONE ((snd_ctl_elem_type_t) 0)
+#define SNDRV_CTL_ELEM_TYPE_NONE ((__force snd_ctl_elem_type_t) 0)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_CTL_ELEM_TYPE_BOOLEAN ((snd_ctl_elem_type_t) 1)
-#define SNDRV_CTL_ELEM_TYPE_INTEGER ((snd_ctl_elem_type_t) 2)
-#define SNDRV_CTL_ELEM_TYPE_ENUMERATED ((snd_ctl_elem_type_t) 3)
-#define SNDRV_CTL_ELEM_TYPE_BYTES ((snd_ctl_elem_type_t) 4)
+#define SNDRV_CTL_ELEM_TYPE_BOOLEAN ((__force snd_ctl_elem_type_t) 1)
+#define SNDRV_CTL_ELEM_TYPE_INTEGER ((__force snd_ctl_elem_type_t) 2)
+#define SNDRV_CTL_ELEM_TYPE_ENUMERATED ((__force snd_ctl_elem_type_t) 3)
+#define SNDRV_CTL_ELEM_TYPE_BYTES ((__force snd_ctl_elem_type_t) 4)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_CTL_ELEM_TYPE_IEC958 ((snd_ctl_elem_type_t) 5)
-#define SNDRV_CTL_ELEM_TYPE_INTEGER64 ((snd_ctl_elem_type_t) 6)
+#define SNDRV_CTL_ELEM_TYPE_IEC958 ((__force snd_ctl_elem_type_t) 5)
+#define SNDRV_CTL_ELEM_TYPE_INTEGER64 ((__force snd_ctl_elem_type_t) 6)
 #define SNDRV_CTL_ELEM_TYPE_LAST SNDRV_CTL_ELEM_TYPE_INTEGER64
 typedef int __bitwise snd_ctl_elem_iface_t;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_CTL_ELEM_IFACE_CARD ((snd_ctl_elem_iface_t) 0)
-#define SNDRV_CTL_ELEM_IFACE_HWDEP ((snd_ctl_elem_iface_t) 1)
-#define SNDRV_CTL_ELEM_IFACE_MIXER ((snd_ctl_elem_iface_t) 2)
-#define SNDRV_CTL_ELEM_IFACE_PCM ((snd_ctl_elem_iface_t) 3)
+#define SNDRV_CTL_ELEM_IFACE_CARD ((__force snd_ctl_elem_iface_t) 0)
+#define SNDRV_CTL_ELEM_IFACE_HWDEP ((__force snd_ctl_elem_iface_t) 1)
+#define SNDRV_CTL_ELEM_IFACE_MIXER ((__force snd_ctl_elem_iface_t) 2)
+#define SNDRV_CTL_ELEM_IFACE_PCM ((__force snd_ctl_elem_iface_t) 3)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define SNDRV_CTL_ELEM_IFACE_RAWMIDI ((snd_ctl_elem_iface_t) 4)
-#define SNDRV_CTL_ELEM_IFACE_TIMER ((snd_ctl_elem_iface_t) 5)
-#define SNDRV_CTL_ELEM_IFACE_SEQUENCER ((snd_ctl_elem_iface_t) 6)
+#define SNDRV_CTL_ELEM_IFACE_RAWMIDI ((__force snd_ctl_elem_iface_t) 4)
+#define SNDRV_CTL_ELEM_IFACE_TIMER ((__force snd_ctl_elem_iface_t) 5)
+#define SNDRV_CTL_ELEM_IFACE_SEQUENCER ((__force snd_ctl_elem_iface_t) 6)
 #define SNDRV_CTL_ELEM_IFACE_LAST SNDRV_CTL_ELEM_IFACE_SEQUENCER
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SNDRV_CTL_ELEM_ACCESS_READ (1 << 0)
@@ -843,7 +843,7 @@ struct snd_ctl_elem_list {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   unsigned int used;
   unsigned int count;
-  struct snd_ctl_elem_id * pids;
+  struct snd_ctl_elem_id __user * pids;
   unsigned char reserved[50];
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };

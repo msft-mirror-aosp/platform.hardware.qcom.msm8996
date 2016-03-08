@@ -243,7 +243,7 @@ struct mdp_input_layer {
 	struct mdp_rect		dst_rect;
 
 	/* Scaling parameters. */
-	struct mdp_scale_data *scale;
+	struct mdp_scale_data __user	*scale;
 
 	/* Buffer attached with each layer. Device uses it for commit call. */
 	struct mdp_layer_buffer	buffer;
@@ -252,7 +252,7 @@ struct mdp_input_layer {
 	 * Source side post processing configuration information for each
 	 * layer.
 	 */
-	void 	*pp_info;
+	void __user		*pp_info;
 
 	/*
 	 * This is an output parameter.
@@ -326,7 +326,7 @@ struct mdp_layer_commit_v1 {
 	struct mdp_rect		right_roi;
 
 	 /* Pointer to a list of input layers for composition. */
-	struct mdp_input_layer *input_layers;
+	struct mdp_input_layer __user *input_layers;
 
 	/* Input layer count present in input list */
 	uint32_t		input_layer_cnt;
@@ -336,7 +336,7 @@ struct mdp_layer_commit_v1 {
 	 * layer as output layer. This is not required for primary
 	 * and external displays
 	 */
-	struct mdp_output_layer *output_layer;
+	struct mdp_output_layer __user *output_layer;
 
 	/*
 	 * This is an output parameter.
@@ -418,7 +418,7 @@ struct mdp_async_layer {
  */
 struct mdp_position_update {
 	 /* Pointer to a list of async updatable input layers */
-	struct mdp_async_layer *input_layers;
+	struct mdp_async_layer __user *input_layers;
 
 	/* Input layer count present in input list */
 	uint32_t input_layer_cnt;

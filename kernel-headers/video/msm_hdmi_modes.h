@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_HDMI_MODES_H__
-#define _MSM_HDMI_MODES_H__
+#ifndef _UAPI_MSM_HDMI_MODES_H__
+#define _UAPI_MSM_HDMI_MODES_H__
 #include <linux/types.h>
 #include <linux/errno.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

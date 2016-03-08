@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_AUDIO_SBC_H
-#define _MSM_AUDIO_SBC_H
+#ifndef _UAPI_MSM_AUDIO_SBC_H
+#define _UAPI_MSM_AUDIO_SBC_H
 #include <linux/msm_audio.h>
 #define AUDIO_SET_SBC_ENC_CONFIG _IOW(AUDIO_IOCTL_MAGIC, (AUDIO_MAX_COMMON_IOCTL_NUM + 0), struct msm_audio_sbc_enc_config)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

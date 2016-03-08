@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _ESOC_CTRL_H_
-#define _ESOC_CTRL_H_
+#ifndef _UAPI_ESOC_CTRL_H_
+#define _UAPI_ESOC_CTRL_H_
 #define ESOC_CODE 0xCC
 #define ESOC_CMD_EXE _IOW(ESOC_CODE, 1, u32)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

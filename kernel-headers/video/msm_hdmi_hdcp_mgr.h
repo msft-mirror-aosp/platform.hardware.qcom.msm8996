@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __HDMI_HDCP_MGR_H
-#define __MSM_HDMI_HDCP_MGR_H
+#ifndef _UAPI__HDMI_HDCP_MGR_H
+#define _UAPI__MSM_HDMI_HDCP_MGR_H
 enum DS_TYPE {
   DS_UNKNOWN,
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

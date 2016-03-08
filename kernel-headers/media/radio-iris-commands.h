@@ -16,13 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __RADIO_IRIS_COMMANDS_H
-#define __RADIO_IRIS_COMMANDS_H
-#include <linux/skbuff.h>
-#include <linux/interrupt.h>
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#include <linux/mutex.h>
-#include <linux/atomic.h>
+#ifndef __UAPI_RADIO_IRIS_COMMANDS_H
+#define __UAPI_RADIO_IRIS_COMMANDS_H
 enum v4l2_cid_private_iris_t {
   V4L2_CID_PRIVATE_IRIS_SRCHMODE = (0x08000000 + 1),
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

@@ -1,5 +1,5 @@
-#ifndef _ESOC_CTRL_H_
-#define _ESOC_CTRL_H_
+#ifndef _UAPI_ESOC_CTRL_H_
+#define _UAPI_ESOC_CTRL_H_
 
 #define ESOC_CODE		0xCC
 
@@ -57,4 +57,17 @@ enum esoc_req {
 	ESOC_REQ_SHUTDOWN,
 };
 
+#ifdef __KERNEL__
+/**
+ * struct esoc_handle: Handle for clients of esoc
+ * @name: name of the external soc.
+ * @link: link of external soc.
+ * @id: id of external soc.
+ */
+struct esoc_handle {
+	const char *name;
+	const char *link;
+	unsigned int id;
+};
+#endif
 #endif

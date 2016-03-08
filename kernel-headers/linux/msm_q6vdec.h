@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_VDEC_H_
-#define _MSM_VDEC_H_
+#ifndef _UAPI_MSM_VDEC_H_
+#define _UAPI_MSM_VDEC_H_
 #include <linux/types.h>
 #define VDEC_IOCTL_MAGIC 'v'
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

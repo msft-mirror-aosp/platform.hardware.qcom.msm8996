@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_AUDIO_AC3_H
-#define _MSM_AUDIO_AC3_H
+#ifndef _UAPI_MSM_AUDIO_AC3_H
+#define _UAPI_MSM_AUDIO_AC3_H
 #include <linux/msm_audio.h>
 #define AUDIO_SET_AC3_CONFIG _IOW(AUDIO_IOCTL_MAGIC, (AUDIO_MAX_COMMON_IOCTL_NUM + 0), unsigned)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

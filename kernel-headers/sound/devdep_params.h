@@ -26,7 +26,7 @@ struct dolby_param_data {
   int32_t param_id;
   int32_t length;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  int32_t * data;
+  int32_t __user * data;
 };
 struct dolby_param_license {
   int32_t dmid;
@@ -68,7 +68,7 @@ struct dts_eagle_param_desc {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   int32_t offset;
   uint32_t device;
-} __attribute__((packed));
+} __packed;
 #endif
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 

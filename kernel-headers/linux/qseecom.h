@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _QSEECOM_H_
-#define _QSEECOM_H_
+#ifndef _UAPI_QSEECOM_H_
+#define _UAPI_QSEECOM_H_
 #include <linux/types.h>
 #include <linux/ioctl.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -177,73 +177,84 @@ struct qseecom_sg_entry_64bit {
   uint32_t len;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 } __attribute__((packed));
+#define QSEECOM_SG_LIST_BUF_FORMAT_VERSION_1 1
+#define QSEECOM_SG_LIST_BUF_FORMAT_VERSION_2 2
+struct qseecom_sg_list_buf_hdr_64bit {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  struct qseecom_sg_entry_64bit blank_entry;
+  uint32_t version;
+  uint64_t new_buf_phys_addr;
+  uint32_t nents_total;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+} __attribute__((packed));
+#define QSEECOM_SG_LIST_BUF_HDR_SZ_64BIT sizeof(struct qseecom_sg_list_buf_hdr_64bit)
 #define MAX_CE_PIPE_PAIR_PER_UNIT 3
 #define INVALID_CE_INFO_UNIT_NUM 0xffffffff
-#define CE_PIPE_PAIR_USE_TYPE_FDE 0
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CE_PIPE_PAIR_USE_TYPE_FDE 0
 #define CE_PIPE_PAIR_USE_TYPE_PFE 1
 struct qseecom_ce_pipe_entry {
   int valid;
-  unsigned int ce_num;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int ce_num;
   unsigned int ce_pipe_pair;
 };
 #define MAX_CE_INFO_HANDLE_SIZE 32
-struct qseecom_ce_info_req {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct qseecom_ce_info_req {
   unsigned char handle[MAX_CE_INFO_HANDLE_SIZE];
   unsigned int usage;
   unsigned int unit_num;
-  unsigned int num_ce_pipe_entries;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  unsigned int num_ce_pipe_entries;
   struct qseecom_ce_pipe_entry ce_pipe_entry[MAX_CE_PIPE_PAIR_PER_UNIT];
 };
 #define SG_ENTRY_SZ sizeof(struct qseecom_sg_entry)
-#define SG_ENTRY_SZ_64BIT sizeof(struct qseecom_sg_entry_64bit)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define SG_ENTRY_SZ_64BIT sizeof(struct qseecom_sg_entry_64bit)
 struct file;
 #define QSEECOM_IOC_MAGIC 0x97
 #define QSEECOM_IOCTL_REGISTER_LISTENER_REQ _IOWR(QSEECOM_IOC_MAGIC, 1, struct qseecom_register_listener_req)
-#define QSEECOM_IOCTL_UNREGISTER_LISTENER_REQ _IO(QSEECOM_IOC_MAGIC, 2)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_IOCTL_UNREGISTER_LISTENER_REQ _IO(QSEECOM_IOC_MAGIC, 2)
 #define QSEECOM_IOCTL_SEND_CMD_REQ _IOWR(QSEECOM_IOC_MAGIC, 3, struct qseecom_send_cmd_req)
 #define QSEECOM_IOCTL_SEND_MODFD_CMD_REQ _IOWR(QSEECOM_IOC_MAGIC, 4, struct qseecom_send_modfd_cmd_req)
 #define QSEECOM_IOCTL_RECEIVE_REQ _IO(QSEECOM_IOC_MAGIC, 5)
-#define QSEECOM_IOCTL_SEND_RESP_REQ _IO(QSEECOM_IOC_MAGIC, 6)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_IOCTL_SEND_RESP_REQ _IO(QSEECOM_IOC_MAGIC, 6)
 #define QSEECOM_IOCTL_LOAD_APP_REQ _IOWR(QSEECOM_IOC_MAGIC, 7, struct qseecom_load_img_req)
 #define QSEECOM_IOCTL_SET_MEM_PARAM_REQ _IOWR(QSEECOM_IOC_MAGIC, 8, struct qseecom_set_sb_mem_param_req)
 #define QSEECOM_IOCTL_UNLOAD_APP_REQ _IO(QSEECOM_IOC_MAGIC, 9)
-#define QSEECOM_IOCTL_GET_QSEOS_VERSION_REQ _IOWR(QSEECOM_IOC_MAGIC, 10, struct qseecom_qseos_version_req)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_IOCTL_GET_QSEOS_VERSION_REQ _IOWR(QSEECOM_IOC_MAGIC, 10, struct qseecom_qseos_version_req)
 #define QSEECOM_IOCTL_PERF_ENABLE_REQ _IO(QSEECOM_IOC_MAGIC, 11)
 #define QSEECOM_IOCTL_PERF_DISABLE_REQ _IO(QSEECOM_IOC_MAGIC, 12)
 #define QSEECOM_IOCTL_LOAD_EXTERNAL_ELF_REQ _IOWR(QSEECOM_IOC_MAGIC, 13, struct qseecom_load_img_req)
-#define QSEECOM_IOCTL_UNLOAD_EXTERNAL_ELF_REQ _IO(QSEECOM_IOC_MAGIC, 14)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_IOCTL_UNLOAD_EXTERNAL_ELF_REQ _IO(QSEECOM_IOC_MAGIC, 14)
 #define QSEECOM_IOCTL_APP_LOADED_QUERY_REQ _IOWR(QSEECOM_IOC_MAGIC, 15, struct qseecom_qseos_app_load_query)
 #define QSEECOM_IOCTL_SEND_CMD_SERVICE_REQ _IOWR(QSEECOM_IOC_MAGIC, 16, struct qseecom_send_svc_cmd_req)
 #define QSEECOM_IOCTL_CREATE_KEY_REQ _IOWR(QSEECOM_IOC_MAGIC, 17, struct qseecom_create_key_req)
-#define QSEECOM_IOCTL_WIPE_KEY_REQ _IOWR(QSEECOM_IOC_MAGIC, 18, struct qseecom_wipe_key_req)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_IOCTL_WIPE_KEY_REQ _IOWR(QSEECOM_IOC_MAGIC, 18, struct qseecom_wipe_key_req)
 #define QSEECOM_IOCTL_SAVE_PARTITION_HASH_REQ _IOWR(QSEECOM_IOC_MAGIC, 19, struct qseecom_save_partition_hash_req)
 #define QSEECOM_IOCTL_IS_ES_ACTIVATED_REQ _IOWR(QSEECOM_IOC_MAGIC, 20, struct qseecom_is_es_activated_req)
 #define QSEECOM_IOCTL_SEND_MODFD_RESP _IOWR(QSEECOM_IOC_MAGIC, 21, struct qseecom_send_modfd_listener_resp)
-#define QSEECOM_IOCTL_SET_BUS_SCALING_REQ _IOWR(QSEECOM_IOC_MAGIC, 23, int)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_IOCTL_SET_BUS_SCALING_REQ _IOWR(QSEECOM_IOC_MAGIC, 23, int)
 #define QSEECOM_IOCTL_UPDATE_KEY_USER_INFO_REQ _IOWR(QSEECOM_IOC_MAGIC, 24, struct qseecom_update_key_userinfo_req)
 #define QSEECOM_QTEEC_IOCTL_OPEN_SESSION_REQ _IOWR(QSEECOM_IOC_MAGIC, 30, struct qseecom_qteec_modfd_req)
 #define QSEECOM_QTEEC_IOCTL_CLOSE_SESSION_REQ _IOWR(QSEECOM_IOC_MAGIC, 31, struct qseecom_qteec_req)
-#define QSEECOM_QTEEC_IOCTL_INVOKE_MODFD_CMD_REQ _IOWR(QSEECOM_IOC_MAGIC, 32, struct qseecom_qteec_modfd_req)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_QTEEC_IOCTL_INVOKE_MODFD_CMD_REQ _IOWR(QSEECOM_IOC_MAGIC, 32, struct qseecom_qteec_modfd_req)
 #define QSEECOM_QTEEC_IOCTL_REQUEST_CANCELLATION_REQ _IOWR(QSEECOM_IOC_MAGIC, 33, struct qseecom_qteec_modfd_req)
 #define QSEECOM_IOCTL_MDTP_CIPHER_DIP_REQ _IOWR(QSEECOM_IOC_MAGIC, 34, struct qseecom_mdtp_cipher_dip_req)
 #define QSEECOM_IOCTL_SEND_MODFD_CMD_64_REQ _IOWR(QSEECOM_IOC_MAGIC, 35, struct qseecom_send_modfd_cmd_req)
-#define QSEECOM_IOCTL_SEND_MODFD_RESP_64 _IOWR(QSEECOM_IOC_MAGIC, 36, struct qseecom_send_modfd_listener_resp)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define QSEECOM_IOCTL_SEND_MODFD_RESP_64 _IOWR(QSEECOM_IOC_MAGIC, 36, struct qseecom_send_modfd_listener_resp)
 #define QSEECOM_IOCTL_GET_CE_PIPE_INFO _IOWR(QSEECOM_IOC_MAGIC, 40, struct qseecom_ce_info_req)
 #define QSEECOM_IOCTL_FREE_CE_PIPE_INFO _IOWR(QSEECOM_IOC_MAGIC, 41, struct qseecom_ce_info_req)
 #define QSEECOM_IOCTL_QUERY_CE_PIPE_INFO _IOWR(QSEECOM_IOC_MAGIC, 42, struct qseecom_ce_info_req)
-#endif
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#endif
 

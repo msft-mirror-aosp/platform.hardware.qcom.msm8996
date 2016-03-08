@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _LINUX_MSM_ADSP_H
-#define _LINUX_MSM_ADSP_H
+#ifndef _UAPI_LINUX_MSM_ADSP_H
+#define _UAPI_LINUX_MSM_ADSP_H
 #include <linux/types.h>
 #include <linux/ioctl.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

@@ -107,7 +107,11 @@
 #ifndef _LINUX_FUSE_H
 #define _LINUX_FUSE_H
 
+#ifdef __KERNEL__
+#include <linux/types.h>
+#else
 #include <stdint.h>
+#endif
 
 /*
  * Version negotiation:
@@ -478,8 +482,10 @@ struct fuse_create_in {
 struct fuse_open_out {
 	uint64_t	fh;
 	uint32_t	open_flags;
-	uint32_t	padding;
-//pat int32_t         lower_fd;/* lower layer file descriptor */
+	union {
+		int32_t         lower_fd;/* lower layer file descriptor */
+		uint32_t	padding;
+	};
 };
 
 struct fuse_release_in {

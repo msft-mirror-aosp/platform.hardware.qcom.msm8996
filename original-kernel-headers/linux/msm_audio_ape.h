@@ -1,8 +1,8 @@
 /*The following structure has been taken
 from Monkey's Audio SDK with permission*/
 
-#ifndef _MSM_AUDIO_APE_H
-#define _MSM_AUDIO_APE_H
+#ifndef _UAPI_MSM_AUDIO_APE_H
+#define _UAPI_MSM_AUDIO_APE_H
 
 #define AUDIO_GET_APE_CONFIG  _IOR(AUDIO_IOCTL_MAGIC, \
 	  (AUDIO_MAX_COMMON_IOCTL_NUM+0), struct msm_audio_ape_config)
@@ -22,4 +22,4 @@ struct msm_audio_ape_config {
 	uint32_t seekTablePresent;
 };
 
-#endif /* _MSM_AUDIO_APE_H */
+#endif /* _UAPI_MSM_AUDIO_APE_H */

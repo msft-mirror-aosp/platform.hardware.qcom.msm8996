@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_VIDC_DEC_H_
-#define _MSM_VIDC_DEC_H_
+#ifndef _UAPI_MSM_VIDC_DEC_H_
+#define _UAPI_MSM_VIDC_DEC_H_
 #include <linux/types.h>
 #include <linux/ioctl.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -93,8 +93,8 @@
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define VDEC_IOCTL_MAGIC 'v'
 struct vdec_ioctl_msg {
-  void * in;
-  void * out;
+  void __user * in;
+  void __user * out;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 #define VDEC_IOCTL_GET_PROFILE_LEVEL_SUPPORTED _IOWR(VDEC_IOCTL_MAGIC, 0, struct vdec_ioctl_msg)
@@ -178,7 +178,7 @@ struct vdec_allocatorproperty {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 struct vdec_bufferpayload {
-  void * bufferaddr;
+  void __user * bufferaddr;
   size_t buffer_len;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   int pmem_fd;
@@ -466,19 +466,19 @@ struct vdec_picsize {
 };
 struct vdec_seqheader {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  void * ptr_seqheader;
+  void __user * ptr_seqheader;
   size_t seq_header_len;
   int pmem_fd;
   size_t pmem_offset;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 struct vdec_mberror {
-  void * ptr_errormap;
+  void __user * ptr_errormap;
   size_t err_mapsize;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 struct vdec_input_frameinfo {
-  void * bufferaddr;
+  void __user * bufferaddr;
   size_t offset;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   size_t datalen;
@@ -488,7 +488,7 @@ struct vdec_input_frameinfo {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   int pmem_fd;
   size_t pmem_offset;
-  void * desc_addr;
+  void __user * desc_addr;
   uint32_t desc_size;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
@@ -507,7 +507,7 @@ struct vdec_aspectratioinfo {
 };
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct vdec_sep_metadatainfo {
-  void * metabufaddr;
+  void __user * metabufaddr;
   uint32_t size;
   int fd;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -516,7 +516,7 @@ struct vdec_sep_metadatainfo {
 };
 struct vdec_output_frameinfo {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  void * bufferaddr;
+  void __user * bufferaddr;
   size_t offset;
   size_t len;
   uint32_t flags;

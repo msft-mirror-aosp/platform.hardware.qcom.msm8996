@@ -402,14 +402,14 @@ struct vpu_control_extended {
 	 * maximum VPU_MAX_EXT_DATA_SIZE bytes
 	 */
 	__u32 data_len;
-	void *data_ptr;
+	void __user *data_ptr;
 
 	/*
 	 * size and ptr of the buffer to recv data
 	 * maximum VPU_MAX_EXT_DATA_SIZE bytes
 	 */
 	__u32 buf_size;
-	void *buf_ptr;
+	void __user *buf_ptr;
 };
 
 /*

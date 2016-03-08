@@ -1,36 +1,7 @@
-/*
- *
- * Copyright (c) 2011-2015 The Linux Foundation. All rights reserved.
- *
- * This file is based on include/net/bluetooth/hci_core.h
- *
- * Written 2000,2001 by Maxim Krasnyansky <maxk@qualcomm.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation;
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF THIRD PARTY RIGHTS.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER(S) AND AUTHOR(S) BE LIABLE FOR ANY
- * CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- *
- * ALL LIABILITY, INCLUDING LIABILITY FOR INFRINGEMENT OF ANY PATENTS,
- * COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS, RELATING TO USE OF THIS
- * SOFTWARE IS DISCLAIMED.
- */
+#ifndef __UAPI_RADIO_IRIS_H
+#define __UAPI_RADIO_IRIS_H
 
-#ifndef __UAPI_RADIO_HCI_CORE_H
-#define __UAPI_RADIO_HCI_CORE_H
-
-#include <linux/skbuff.h>
-#include <linux/interrupt.h>
-#include <linux/mutex.h>
-#include <linux/atomic.h>
+#include <linux/types.h>
 #include <media/radio-iris-commands.h>
 
 #define MIN_TX_TONE_VAL  0x00
@@ -132,67 +103,18 @@
 #define AF_LIST_MAX     (FM_AF_LIST_MAX_SIZE / 4) /* Each AF frequency consist
 							of sizeof(int) bytes */
 #define MAX_BLEND_INDEX 49
-/* HCI timeouts */
-#define RADIO_HCI_TIMEOUT	(10000)	/* 10 seconds */
 
 #define TUNE_PARAM 16
 #define FM_RDS_3A_GRP (0x40)
 struct radio_hci_command_hdr {
 	__le16	opcode;		/* OCF & OGF */
 	__u8	plen;
-} __attribute__((packed));
+} __packed;
 
 struct radio_hci_event_hdr {
 	__u8	evt;
 	__u8	plen;
-} __attribute__((packed));
-
-struct radio_hci_dev {
-	char		name[8];
-	unsigned long	flags;
-	__u16		id;
-	__u8		bus;
-	__u8		dev_type;
-	__u8		dev_name[248];
-	__u8		dev_class[3];
-	__u8		features[8];
-	__u8		commands[64];
-
-	unsigned int	data_block_len;
-	unsigned long	cmd_last_tx;
-
-	struct sk_buff		*sent_cmd;
-
-	__u32			req_status;
-	__u32			req_result;
-	atomic_t	cmd_cnt;
-
-	struct tasklet_struct	cmd_task;
-	struct tasklet_struct	rx_task;
-	struct tasklet_struct	tx_task;
-
-	struct sk_buff_head	rx_q;
-	struct sk_buff_head	raw_q;
-	struct sk_buff_head	cmd_q;
-
-	struct mutex		req_lock;
-	wait_queue_head_t	req_wait_q;
-
-	int (*open)(struct radio_hci_dev *hdev);
-	int (*close)(struct radio_hci_dev *hdev);
-	int (*flush)(struct radio_hci_dev *hdev);
-	int (*send)(struct sk_buff *skb);
-	void (*destruct)(struct radio_hci_dev *hdev);
-	void (*notify)(struct radio_hci_dev *hdev, unsigned int evt);
-	void (*close_smd)(void);
-};
-
-int radio_hci_register_dev(struct radio_hci_dev *hdev);
-int radio_hci_unregister_dev(struct radio_hci_dev *hdev);
-int radio_hci_recv_frame(struct sk_buff *skb);
-int radio_hci_send_cmd(struct radio_hci_dev *hdev, __u16 opcode, __u32 plen,
-	void *param);
-void radio_hci_event_packet(struct radio_hci_dev *hdev, struct sk_buff *skb);
+} __packed;
 
 /* Opcode OCF */
 /* HCI recv control commands opcode */
@@ -309,7 +231,7 @@ struct hci_fm_recv_conf_req {
 	__u8	hlsi;
 	__u32	band_low_limit;
 	__u32	band_high_limit;
-} __attribute__((packed));
+} __packed;
 
 /* ----- HCI Command request ----- */
 struct hci_fm_trans_conf_req_struct {
@@ -317,7 +239,7 @@ struct hci_fm_trans_conf_req_struct {
 	__u8	rds_std;
 	__u32	band_low_limit;
 	__u32	band_high_limit;
-} __attribute__((packed));
+} __packed;
 
 
 /* ----- HCI Command request ----- */
@@ -328,7 +250,7 @@ struct hci_fm_tx_ps {
 	__u8	ps_repeatcount;
 	__u8	ps_num;
 	__u8    ps_data[TX_PS_DATA_LENGTH];
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_tx_rt {
 	__u8    rt_control;
@@ -336,44 +258,44 @@ struct hci_fm_tx_rt {
 	__u8	pty;
 	__u8	rt_len;
 	__u8    rt_data[TX_RT_DATA_LENGTH];
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_mute_mode_req {
 	__u8	hard_mute;
 	__u8	soft_mute;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_stereo_mode_req {
 	__u8    stereo_mode;
 	__u8    sig_blend;
 	__u8    intf_blend;
 	__u8    most_switch;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_search_station_req {
 	__u8    srch_mode;
 	__u8    scan_time;
 	__u8    srch_dir;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_search_rds_station_req {
 	struct hci_fm_search_station_req srch_station;
 	__u8    srch_pty;
 	__u16   srch_pi;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_search_station_list_req {
 	__u8    srch_list_mode;
 	__u8    srch_list_dir;
 	__u32   srch_list_max;
 	__u8    srch_pty;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_rds_grp_req {
 	__u32   rds_grp_enable_mask;
 	__u32   rds_buf_size;
 	__u8    en_rds_change_filter;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_en_avd_ctrl_req {
 	__u8    no_freqs;
@@ -381,39 +303,39 @@ struct hci_fm_en_avd_ctrl_req {
 	__u8    lo_shft;
 	__u16   freq_min;
 	__u16   freq_max;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_def_data_rd_req {
 	__u8    mode;
 	__u8    length;
 	__u8    param_len;
 	__u8    param;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_def_data_wr_req {
 	__u8    mode;
 	__u8    length;
 	__u8   data[DEFAULT_DATA_SIZE];
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_riva_data {
 	__u8 subopcode;
 	__u32   start_addr;
 	__u8    length;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_riva_poke {
 	struct hci_fm_riva_data cmd_params;
 	__u8    data[MAX_RIVA_PEEK_RSP_SIZE];
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_ssbi_req {
 	__u16   start_addr;
 	__u8    data;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_ssbi_peek {
 	__u16 start_address;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_ch_det_threshold {
 	char sinr;
@@ -421,7 +343,7 @@ struct hci_fm_ch_det_threshold {
 	__u8 low_th;
 	__u8 high_th;
 
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_blend_table {
 	__u8 ucBlendType;
@@ -433,7 +355,7 @@ struct hci_fm_blend_table {
 	__u8 scBlendRmssiHi;
 	__u8 ucBlendIndexHi;
 	__u8 ucBlendIndex[MAX_BLEND_INDEX];
-} __attribute__((packed));
+} __packed;
 
 /*HCI events*/
 #define HCI_EV_TUNE_STATUS              0x01
@@ -519,22 +441,22 @@ struct hci_ev_tune_status {
 	__u8    mute_mode;
 	char    sinr;
 	__u8	intf_det_th;
-} __attribute__((packed));
+} __packed;
 
 struct rds_blk_data {
 	__u8	rdsMsb;
 	__u8	rdsLsb;
 	__u8	blockStatus;
-} __attribute__((packed));
+} __packed;
 
 struct rds_grp_data {
 	struct rds_blk_data rdsBlk[4];
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_rds_rx_data {
 	__u8    num_rds_grps;
 	struct  rds_grp_data rds_grp_data[MAX_RAW_RDS_GRPS];
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_prg_service {
 	__le16   pi_prg_id;
@@ -545,7 +467,7 @@ struct hci_ev_prg_service {
 	__u8    dec_id_ctrl_code_flag;
 	__u8    ps_num;
 	__u8    prg_service_name[119];
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_radio_text {
 	__le16   pi_prg_id;
@@ -553,87 +475,87 @@ struct hci_ev_radio_text {
 	__u8    ta_prg_code_type;
 	__u8    txt_ab_flag;
 	__u8    radio_txt[64];
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_af_list {
 	__le32   tune_freq;
 	__le16   pi_code;
 	__u8    af_size;
 	__u8    af_list[FM_AF_LIST_MAX_SIZE];
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_cmd_complete {
 	__u8    num_hci_cmd_pkts;
 	__le16   cmd_opcode;
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_cmd_status {
 	__u8    status;
 	__u8    num_hci_cmd_pkts;
 	__le16   status_opcode;
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_srch_st {
 	__le32    station_freq;
 	__u8    rds_cap;
 	__u8   pty;
 	__le16   status_opcode;
-} __attribute__((packed));
+} __packed;
 
 struct hci_ev_rel_freq {
 	__u8  rel_freq_msb;
 	__u8  rel_freq_lsb;
 
-} __attribute__((packed));
+} __packed;
 struct hci_ev_srch_list_compl {
 	__u8    num_stations_found;
 	struct hci_ev_rel_freq  rel_freq[20];
-} __attribute__((packed));
+} __packed;
 
 /* ----- HCI Event Response ----- */
 struct hci_fm_conf_rsp {
 	__u8    status;
 	struct hci_fm_recv_conf_req recv_conf_rsp;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_get_trans_conf_rsp {
 	__u8    status;
 	struct hci_fm_trans_conf_req_struct trans_conf_rsp;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_sig_threshold_rsp {
 	__u8    status;
 	__u8    sig_threshold;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_station_rsp {
 	struct hci_ev_tune_status station_rsp;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_prgm_srv_rsp {
 	__u8    status;
 	struct hci_ev_prg_service prg_srv;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_radio_txt_rsp {
 	__u8    status;
 	struct hci_ev_radio_text rd_txt;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_af_list_rsp {
 	__u8    status;
 	struct hci_ev_af_list rd_txt;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_data_rd_rsp {
 	__u8    status;
 	__u8    ret_data_len;
 	__u8    data[DEFAULT_DATA_SIZE];
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_feature_list_rsp {
 	__u8    status;
 	__u8    feature_mask;
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_dbg_param_rsp {
 	__u8    status;
@@ -644,7 +566,7 @@ struct hci_fm_dbg_param_rsp {
 	__u8    pilot_pil;
 	__u8    io_verc;
 	__u8    in_det_out;
-} __attribute__((packed));
+} __packed;
 
 #define CLKSPURID_INDEX0	0
 #define CLKSPURID_INDEX1	5
@@ -666,15 +588,12 @@ struct hci_fm_spur_data {
 	__u32	freq[MAX_SPUR_FREQ_LIMIT];
 	__s8	rmssi[MAX_SPUR_FREQ_LIMIT];
 	__u8	enable[MAX_SPUR_FREQ_LIMIT];
-} __attribute__((packed));
+} __packed;
 
 
 /* HCI dev events */
 #define RADIO_HCI_DEV_REG			1
 #define RADIO_HCI_DEV_WRITE			2
-
-#define hci_req_lock(d)		mutex_lock(&d->req_lock)
-#define hci_req_unlock(d)	mutex_unlock(&d->req_lock)
 
 /* FM RDS */
 #define RDS_PTYPE 2
@@ -763,16 +682,6 @@ enum iris_xfr_t {
 	IRIS_XFR_AF_LIST,
 	IRIS_XFR_MAX
 };
-
-#undef FMDBG
-#ifdef FM_DEBUG
-#define FMDBG(fmt, args...) pr_info("iris_radio: " fmt, ##args)
-#else
-#define FMDBG(fmt, args...)
-#endif
-
-#undef FMDERR
-#define FMDERR(fmt, args...) pr_err("iris_radio: " fmt, ##args)
 
 /* Search options */
 enum search_t {
@@ -874,250 +783,29 @@ struct hci_fm_set_cal_req_proc {
 	__u8    mode;
 	/*Max process calibration data size*/
 	__u8    data[PROCS_CALIB_SIZE];
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_set_cal_req_dc {
 	__u8    mode;
 	/*Max DC calibration data size*/
 	__u8    data[DC_CALIB_SIZE];
-} __attribute__((packed));
+} __packed;
 
 struct hci_cc_do_calibration_rsp {
 	__u8 status;
 	__u8 mode;
 	__u8 data[MAX_CALIB_SIZE];
-} __attribute__((packed));
+} __packed;
 
 struct hci_fm_set_spur_table_req {
 	__u8 mode;
 	__u8 no_of_freqs_entries;
-	u8 spur_data[FM_SPUR_TBL_SIZE];
-} __attribute__((packed));
+	__u8 spur_data[FM_SPUR_TBL_SIZE];
+} __packed;
 /* Low Power mode*/
 #define SIG_LEVEL_INTR  (1 << 0)
 #define RDS_SYNC_INTR   (1 << 1)
 #define AUDIO_CTRL_INTR (1 << 2)
 #define AF_JUMP_ENABLE  (1 << 4)
 
-int hci_def_data_read(struct hci_fm_def_data_rd_req *arg,
-	struct radio_hci_dev *hdev);
-int hci_def_data_write(struct hci_fm_def_data_wr_req *arg,
-	struct radio_hci_dev *hdev);
-int hci_fm_do_calibration(__u8 *arg, struct radio_hci_dev *hdev);
-int hci_fm_do_calibration(__u8 *arg, struct radio_hci_dev *hdev);
-
-static __inline__ int is_valid_tone(int tone)
-{
-	if ((tone >= MIN_TX_TONE_VAL) &&
-		(tone <= MAX_TX_TONE_VAL))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_hard_mute(int hard_mute)
-{
-	if ((hard_mute >= MIN_HARD_MUTE_VAL) &&
-		(hard_mute <= MAX_HARD_MUTE_VAL))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_srch_mode(int srch_mode)
-{
-	if ((srch_mode >= MIN_SRCH_MODE) &&
-		(srch_mode <= MAX_SRCH_MODE))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_scan_dwell_prd(int scan_dwell_prd)
-{
-	if ((scan_dwell_prd >= MIN_SCAN_DWELL) &&
-		(scan_dwell_prd <= MAX_SCAN_DWELL))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_sig_th(int sig_th)
-{
-	if ((sig_th >= MIN_SIG_TH) &&
-		(sig_th <= MAX_SIG_TH))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_pty(int pty)
-{
-	if ((pty >= MIN_PTY) &&
-		(pty <= MAX_PTY))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_pi(int pi)
-{
-	if ((pi >= MIN_PI) &&
-		(pi <= MAX_PI))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_srch_station_cnt(int cnt)
-{
-	if ((cnt >= MIN_SRCH_STATIONS_CNT) &&
-		(cnt <= MAX_SRCH_STATIONS_CNT))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_chan_spacing(int spacing)
-{
-	if ((spacing >= MIN_CHAN_SPACING) &&
-		(spacing <= MAX_CHAN_SPACING))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_emphasis(int emphasis)
-{
-	if ((emphasis >= MIN_EMPHASIS) &&
-		(emphasis <= MAX_EMPHASIS))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_rds_std(int rds_std)
-{
-	if ((rds_std >= MIN_RDS_STD) &&
-		(rds_std <= MAX_RDS_STD))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_antenna(int antenna_type)
-{
-	if ((antenna_type >= MIN_ANTENNA_VAL) &&
-		(antenna_type <= MAX_ANTENNA_VAL))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_ps_repeat_cnt(int cnt)
-{
-	if ((cnt >= MIN_TX_PS_REPEAT_CNT) &&
-		(cnt <= MAX_TX_PS_REPEAT_CNT))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_soft_mute(int soft_mute)
-{
-	if ((soft_mute >= MIN_SOFT_MUTE) &&
-		(soft_mute <= MAX_SOFT_MUTE))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_peek_len(int len)
-{
-	if ((len >= MIN_PEEK_ACCESS_LEN) &&
-		(len <= MAX_PEEK_ACCESS_LEN))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_reset_cntr(int cntr)
-{
-	if ((cntr >= MIN_RESET_CNTR) &&
-		(cntr <= MAX_RESET_CNTR))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_hlsi(int hlsi)
-{
-	if ((hlsi >= MIN_HLSI) &&
-		(hlsi <= MAX_HLSI))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_notch_filter(int filter)
-{
-	if ((filter >= MIN_NOTCH_FILTER) &&
-		(filter <= MAX_NOTCH_FILTER))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_intf_det_low_th(int th)
-{
-	if ((th >= MIN_INTF_DET_OUT_LW_TH) &&
-		(th <= MAX_INTF_DET_OUT_LW_TH))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_intf_det_hgh_th(int th)
-{
-	if ((th >= MIN_INTF_DET_OUT_HG_TH) &&
-		(th <= MAX_INTF_DET_OUT_HG_TH))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_sinr_th(int th)
-{
-	if ((th >= MIN_SINR_TH) &&
-		(th <= MAX_SINR_TH))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_sinr_samples(int samples_cnt)
-{
-	if ((samples_cnt >= MIN_SINR_SAMPLES) &&
-		(samples_cnt <= MAX_SINR_SAMPLES))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_fm_state(int state)
-{
-	if ((state >= 0) && (state < FM_MAX_NO_STATES))
-		return 1;
-	else
-		return 0;
-}
-
-static __inline__ int is_valid_blend_value(int val)
-{
-	if ((val >= MIN_BLEND_HI) && (val <= MAX_BLEND_HI))
-		return 1;
-	else
-		return 0;
-}
-
-#endif /* __UAPI_RADIO_HCI_CORE_H */
+#endif

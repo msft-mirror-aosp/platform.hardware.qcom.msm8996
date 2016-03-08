@@ -32,7 +32,7 @@ enum wcd_cal_type {
 struct wcdcal_ioctl_buffer {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 size;
-  __u8 * buffer;
+  __u8 __user * buffer;
   enum wcd_cal_type cal_type;
 };
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

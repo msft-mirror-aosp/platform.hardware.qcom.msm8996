@@ -1,5 +1,5 @@
-#ifndef _MSM_VENC_H_
-#define _MSM_VENC_H_
+#ifndef _UAPI_MSM_VENC_H_
+#define _UAPI_MSM_VENC_H_
 
 #include <linux/types.h>
 

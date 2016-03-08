@@ -16,124 +16,119 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __UAPI_RADIO_HCI_CORE_H
-#define __UAPI_RADIO_HCI_CORE_H
-#include <linux/skbuff.h>
-#include <linux/interrupt.h>
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#include <linux/mutex.h>
-#include <linux/atomic.h>
+#ifndef __UAPI_RADIO_IRIS_H
+#define __UAPI_RADIO_IRIS_H
+#include <linux/types.h>
 #include <media/radio-iris-commands.h>
-#define MIN_TX_TONE_VAL 0x00
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_TX_TONE_VAL 0x00
 #define MAX_TX_TONE_VAL 0x07
 #define MIN_HARD_MUTE_VAL 0x00
 #define MAX_HARD_MUTE_VAL 0x03
-#define MIN_SRCH_MODE 0x00
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_SRCH_MODE 0x00
 #define MAX_SRCH_MODE 0x09
 #define MIN_SCAN_DWELL 0x00
 #define MAX_SCAN_DWELL 0x0F
-#define MIN_SIG_TH 0x00
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_SIG_TH 0x00
 #define MAX_SIG_TH 0x03
 #define MIN_PTY 0X00
 #define MAX_PTY 0x1F
-#define MIN_PI 0x0000
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_PI 0x0000
 #define MAX_PI 0xFFFF
 #define MIN_SRCH_STATIONS_CNT 0x00
 #define MAX_SRCH_STATIONS_CNT 0x14
-#define MIN_CHAN_SPACING 0x00
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_CHAN_SPACING 0x00
 #define MAX_CHAN_SPACING 0x02
 #define MIN_EMPHASIS 0x00
 #define MAX_EMPHASIS 0x01
-#define MIN_RDS_STD 0x00
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_RDS_STD 0x00
 #define MAX_RDS_STD 0x02
 #define MIN_ANTENNA_VAL 0x00
 #define MAX_ANTENNA_VAL 0x01
-#define MIN_TX_PS_REPEAT_CNT 0x01
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_TX_PS_REPEAT_CNT 0x01
 #define MAX_TX_PS_REPEAT_CNT 0x0F
 #define MIN_SOFT_MUTE 0x00
 #define MAX_SOFT_MUTE 0x01
-#define MIN_PEEK_ACCESS_LEN 0x01
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_PEEK_ACCESS_LEN 0x01
 #define MAX_PEEK_ACCESS_LEN 0xF9
 #define MIN_RESET_CNTR 0x00
 #define MAX_RESET_CNTR 0x01
-#define MIN_HLSI 0x00
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_HLSI 0x00
 #define MAX_HLSI 0x02
 #define MIN_NOTCH_FILTER 0x00
 #define MAX_NOTCH_FILTER 0x02
-#define MIN_INTF_DET_OUT_LW_TH 0x00
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_INTF_DET_OUT_LW_TH 0x00
 #define MAX_INTF_DET_OUT_LW_TH 0xFF
 #define MIN_INTF_DET_OUT_HG_TH 0x00
 #define MAX_INTF_DET_OUT_HG_TH 0xFF
-#define MIN_SINR_TH - 128
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_SINR_TH - 128
 #define MAX_SINR_TH 127
 #define MIN_SINR_SAMPLES 0x01
 #define MAX_SINR_SAMPLES 0xFF
-#define MIN_BLEND_HI - 128
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MIN_BLEND_HI - 128
 #define MAX_BLEND_HI 127
 #define RADIO_HCI_COMMAND_HDR_SIZE sizeof(struct radio_hci_command_hdr)
 #define RADIO_HCI_EVENT_HDR_SIZE sizeof(struct radio_hci_event_hdr)
-#define RADIO_HCI_COMMAND_PKT 0x11
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define RADIO_HCI_COMMAND_PKT 0x11
 #define RADIO_HCI_EVENT_PKT 0x14
 #define MAX_RIVA_PEEK_RSP_SIZE 251
 #define DEFAULT_DATA_OFFSET 2
-#define DEFAULT_DATA_SIZE 249
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define DEFAULT_DATA_SIZE 249
 #define FM_TX_PWR_LVL_STEP_SIZE 36
 #define FM_TX_PWR_LVL_0 0
 #define FM_TX_PWR_LVL_MAX 7
-#define FM_TX_PHY_CFG_MODE 0x3c
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define FM_TX_PHY_CFG_MODE 0x3c
 #define FM_TX_PHY_CFG_LEN 0x10
 #define FM_TX_PWR_GAIN_OFFSET 14
 #define FM_RDS_CNFG_MODE 0x0f
-#define FM_RDS_CNFG_LEN 0x10
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define FM_RDS_CNFG_LEN 0x10
 #define AF_RMSSI_TH_LSB_OFFSET 10
 #define AF_RMSSI_TH_MSB_OFFSET 11
 #define AF_RMSSI_SAMPLES_OFFSET 15
-#define FM_RX_CONFG_MODE 0x15
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define FM_RX_CONFG_MODE 0x15
 #define FM_RX_CNFG_LEN 0x20
 #define GD_CH_RMSSI_TH_OFFSET 12
 #define MAX_GD_CH_RMSSI_TH 127
-#define SRCH_ALGO_TYPE_OFFSET 25
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define SRCH_ALGO_TYPE_OFFSET 25
 #define SINRFIRSTSTAGE_OFFSET 26
 #define RMSSIFIRSTSTAGE_OFFSET 27
 #define CF0TH12_BYTE1_OFFSET 8
-#define CF0TH12_BYTE2_OFFSET 9
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CF0TH12_BYTE2_OFFSET 9
 #define CF0TH12_BYTE3_OFFSET 10
 #define CF0TH12_BYTE4_OFFSET 11
 #define MAX_SINR_FIRSTSTAGE 127
-#define MAX_RMSSI_FIRSTSTAGE 127
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MAX_RMSSI_FIRSTSTAGE 127
 #define RDS_PS0_XFR_MODE 0x01
 #define RDS_PS0_LEN 6
 #define RX_REPEATE_BYTE_OFFSET 5
-#define FM_SPUR_TBL_SIZE 240
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define FM_SPUR_TBL_SIZE 240
 #define SPUR_DATA_LEN 16
 #define ENTRIES_EACH_CMD 15
 #define SPUR_DATA_INDEX 2
-#define FM_AF_LIST_MAX_SIZE 200
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define FM_AF_LIST_MAX_SIZE 200
 #define AF_LIST_MAX (FM_AF_LIST_MAX_SIZE / 4)
 #define MAX_BLEND_INDEX 49
-#define RADIO_HCI_TIMEOUT (10000)
 #define TUNE_PARAM 16
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define FM_RDS_3A_GRP (0x40)
@@ -141,52 +136,12 @@ struct radio_hci_command_hdr {
   __le16 opcode;
   __u8 plen;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct radio_hci_event_hdr {
   __u8 evt;
   __u8 plen;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
-struct radio_hci_dev {
-  char name[8];
-  unsigned long flags;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  __u16 id;
-  __u8 bus;
-  __u8 dev_type;
-  __u8 dev_name[248];
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  __u8 dev_class[3];
-  __u8 features[8];
-  __u8 commands[64];
-  unsigned int data_block_len;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  unsigned long cmd_last_tx;
-  struct sk_buff * sent_cmd;
-  __u32 req_status;
-  __u32 req_result;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  atomic_t cmd_cnt;
-  struct tasklet_struct cmd_task;
-  struct tasklet_struct rx_task;
-  struct tasklet_struct tx_task;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  struct sk_buff_head rx_q;
-  struct sk_buff_head raw_q;
-  struct sk_buff_head cmd_q;
-  struct mutex req_lock;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  wait_queue_head_t req_wait_q;
-  int(* open) (struct radio_hci_dev * hdev);
-  int(* close) (struct radio_hci_dev * hdev);
-  int(* flush) (struct radio_hci_dev * hdev);
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  int(* send) (struct sk_buff * skb);
-  void(* destruct) (struct radio_hci_dev * hdev);
-  void(* notify) (struct radio_hci_dev * hdev, unsigned int evt);
-  void(* close_smd) (void);
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
+} __packed;
 #define HCI_OCF_FM_ENABLE_RECV_REQ 0x0001
 #define HCI_OCF_FM_DISABLE_RECV_REQ 0x0002
 #define HCI_OCF_FM_GET_RECV_CONF_REQ 0x0003
@@ -298,7 +253,7 @@ struct hci_fm_recv_conf_req {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 band_low_limit;
   __u32 band_high_limit;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_trans_conf_req_struct {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 emphasis;
@@ -306,7 +261,7 @@ struct hci_fm_trans_conf_req_struct {
   __u32 band_low_limit;
   __u32 band_high_limit;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_tx_ps {
   __u8 ps_control;
   __u16 pi;
@@ -316,7 +271,7 @@ struct hci_fm_tx_ps {
   __u8 ps_num;
   __u8 ps_data[TX_PS_DATA_LENGTH];
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_tx_rt {
   __u8 rt_control;
   __u16 pi;
@@ -324,12 +279,12 @@ struct hci_fm_tx_rt {
   __u8 pty;
   __u8 rt_len;
   __u8 rt_data[TX_RT_DATA_LENGTH];
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_fm_mute_mode_req {
   __u8 hard_mute;
   __u8 soft_mute;
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_fm_stereo_mode_req {
   __u8 stereo_mode;
@@ -337,19 +292,19 @@ struct hci_fm_stereo_mode_req {
   __u8 intf_blend;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 most_switch;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_search_station_req {
   __u8 srch_mode;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 scan_time;
   __u8 srch_dir;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_search_rds_station_req {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   struct hci_fm_search_station_req srch_station;
   __u8 srch_pty;
   __u16 srch_pi;
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_fm_search_station_list_req {
   __u8 srch_list_mode;
@@ -357,13 +312,13 @@ struct hci_fm_search_station_list_req {
   __u32 srch_list_max;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 srch_pty;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_rds_grp_req {
   __u32 rds_grp_enable_mask;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 rds_buf_size;
   __u8 en_rds_change_filter;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_en_avd_ctrl_req {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 no_freqs;
@@ -372,48 +327,48 @@ struct hci_fm_en_avd_ctrl_req {
   __u16 freq_min;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u16 freq_max;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_def_data_rd_req {
   __u8 mode;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 length;
   __u8 param_len;
   __u8 param;
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_fm_def_data_wr_req {
   __u8 mode;
   __u8 length;
   __u8 data[DEFAULT_DATA_SIZE];
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_riva_data {
   __u8 subopcode;
   __u32 start_addr;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 length;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_riva_poke {
   struct hci_fm_riva_data cmd_params;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 data[MAX_RIVA_PEEK_RSP_SIZE];
-} __attribute__((packed));
+} __packed;
 struct hci_fm_ssbi_req {
   __u16 start_addr;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 data;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_ssbi_peek {
   __u16 start_address;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_ch_det_threshold {
   char sinr;
   __u8 sinr_samples;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 low_th;
   __u8 high_th;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_blend_table {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 ucBlendType;
@@ -427,7 +382,7 @@ struct hci_fm_blend_table {
   __u8 ucBlendIndexHi;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 ucBlendIndex[MAX_BLEND_INDEX];
-} __attribute__((packed));
+} __packed;
 #define HCI_EV_TUNE_STATUS 0x01
 #define HCI_EV_RDS_LOCK_STATUS 0x02
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -509,22 +464,22 @@ struct hci_ev_tune_status {
   __u8 mute_mode;
   char sinr;
   __u8 intf_det_th;
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct rds_blk_data {
   __u8 rdsMsb;
   __u8 rdsLsb;
   __u8 blockStatus;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct rds_grp_data {
   struct rds_blk_data rdsBlk[4];
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_ev_rds_rx_data {
   __u8 num_rds_grps;
   struct rds_grp_data rds_grp_data[MAX_RAW_RDS_GRPS];
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_ev_prg_service {
   __le16 pi_prg_id;
@@ -537,7 +492,7 @@ struct hci_ev_prg_service {
   __u8 ps_num;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 prg_service_name[119];
-} __attribute__((packed));
+} __packed;
 struct hci_ev_radio_text {
   __le16 pi_prg_id;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -546,25 +501,25 @@ struct hci_ev_radio_text {
   __u8 txt_ab_flag;
   __u8 radio_txt[64];
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_ev_af_list {
   __le32 tune_freq;
   __le16 pi_code;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 af_size;
   __u8 af_list[FM_AF_LIST_MAX_SIZE];
-} __attribute__((packed));
+} __packed;
 struct hci_ev_cmd_complete {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 num_hci_cmd_pkts;
   __le16 cmd_opcode;
-} __attribute__((packed));
+} __packed;
 struct hci_ev_cmd_status {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 status;
   __u8 num_hci_cmd_pkts;
   __le16 status_opcode;
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_ev_srch_st {
   __le32 station_freq;
@@ -572,62 +527,62 @@ struct hci_ev_srch_st {
   __u8 pty;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __le16 status_opcode;
-} __attribute__((packed));
+} __packed;
 struct hci_ev_rel_freq {
   __u8 rel_freq_msb;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 rel_freq_lsb;
-} __attribute__((packed));
+} __packed;
 struct hci_ev_srch_list_compl {
   __u8 num_stations_found;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   struct hci_ev_rel_freq rel_freq[20];
-} __attribute__((packed));
+} __packed;
 struct hci_fm_conf_rsp {
   __u8 status;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   struct hci_fm_recv_conf_req recv_conf_rsp;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_get_trans_conf_rsp {
   __u8 status;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   struct hci_fm_trans_conf_req_struct trans_conf_rsp;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_sig_threshold_rsp {
   __u8 status;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 sig_threshold;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_station_rsp {
   struct hci_ev_tune_status station_rsp;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_prgm_srv_rsp {
   __u8 status;
   struct hci_ev_prg_service prg_srv;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_radio_txt_rsp {
   __u8 status;
   struct hci_ev_radio_text rd_txt;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_af_list_rsp {
   __u8 status;
   struct hci_ev_af_list rd_txt;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_data_rd_rsp {
   __u8 status;
   __u8 ret_data_len;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 data[DEFAULT_DATA_SIZE];
-} __attribute__((packed));
+} __packed;
 struct hci_fm_feature_list_rsp {
   __u8 status;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 feature_mask;
-} __attribute__((packed));
+} __packed;
 struct hci_fm_dbg_param_rsp {
   __u8 status;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -639,7 +594,7 @@ struct hci_fm_dbg_param_rsp {
   __u8 pilot_pil;
   __u8 io_verc;
   __u8 in_det_out;
-} __attribute__((packed));
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define CLKSPURID_INDEX0 0
 #define CLKSPURID_INDEX1 5
@@ -662,231 +617,219 @@ struct hci_fm_spur_data {
   __s8 rmssi[MAX_SPUR_FREQ_LIMIT];
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 enable[MAX_SPUR_FREQ_LIMIT];
-} __attribute__((packed));
+} __packed;
 #define RADIO_HCI_DEV_REG 1
 #define RADIO_HCI_DEV_WRITE 2
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define hci_req_lock(d) mutex_lock(& d->req_lock)
-#define hci_req_unlock(d) mutex_unlock(& d->req_lock)
 #define RDS_PTYPE 2
 #define RDS_PID_LOWER 1
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RDS_PID_HIGHER 0
 #define RDS_OFFSET 5
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RDS_PS_LENGTH_OFFSET 7
 #define RDS_STRING 8
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RDS_PS_DATA_OFFSET 8
 #define RDS_CONFIG_OFFSET 3
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RDS_AF_JUMP_OFFSET 4
 #define PI_CODE_OFFSET 4
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define AF_SIZE_OFFSET 6
 #define AF_LIST_OFFSET 7
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RT_A_B_FLAG_OFFSET 4
 enum radio_state_t {
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_OFF,
   FM_RECV,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_TRANS,
   FM_RESET,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_CALIB,
   FM_TURNING_OFF,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_RECV_TURNING_ON,
   FM_TRANS_TURNING_ON,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_MAX_NO_STATES,
 };
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum emphasis_type {
   FM_RX_EMP75 = 0x0,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_RX_EMP50 = 0x1
 };
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum channel_space_type {
   FM_RX_SPACE_200KHZ = 0x0,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_RX_SPACE_100KHZ = 0x1,
   FM_RX_SPACE_50KHZ = 0x2
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 enum high_low_injection {
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   AUTO_HI_LO_INJECTION = 0x0,
   LOW_SIDE_INJECTION = 0x1,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   HIGH_SIDE_INJECTION = 0x2
 };
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum fm_rds_type {
   FM_RX_RDBS_SYSTEM = 0x0,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   FM_RX_RDS_SYSTEM = 0x1
 };
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum iris_region_t {
   IRIS_REGION_US,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_REGION_EU,
   IRIS_REGION_JAPAN,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_REGION_JAPAN_WIDE,
   IRIS_REGION_OTHER
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 #define STD_BUF_SIZE (256)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum iris_buf_t {
   IRIS_BUF_SRCH_LIST,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_BUF_EVENTS,
   IRIS_BUF_RT_RDS,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_BUF_PS_RDS,
   IRIS_BUF_RAW_RDS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_BUF_AF_LIST,
   IRIS_BUF_PEEK,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_BUF_SSBI_PEEK,
   IRIS_BUF_RDS_CNTRS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_BUF_RD_DEFAULT,
   IRIS_BUF_CAL_DATA,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_BUF_RT_PLUS,
   IRIS_BUF_ERT,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_BUF_SPUR,
   IRIS_BUF_MAX,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 enum iris_xfr_t {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_XFR_SYNC,
   IRIS_XFR_ERROR,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_XFR_SRCH_LIST,
   IRIS_XFR_RT_RDS,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_XFR_PS_RDS,
   IRIS_XFR_AF_LIST,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   IRIS_XFR_MAX
 };
-#undef FMDBG
-#ifdef FM_DEBUG
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define FMDBG(fmt,args...) pr_info("iris_radio: " fmt, ##args)
-#else
-#define FMDBG(fmt,args...)
-#endif
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#undef FMDERR
-#define FMDERR(fmt,args...) pr_err("iris_radio: " fmt, ##args)
 enum search_t {
   SEEK,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   SCAN,
   SCAN_FOR_STRONG,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   SCAN_FOR_WEAK,
   RDS_SEEK_PTY,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   RDS_SCAN_PTY,
   RDS_SEEK_PI,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   RDS_AF_JUMP,
 };
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum spur_entry_levels {
   ENTRY_0,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   ENTRY_1,
   ENTRY_2,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   ENTRY_3,
   ENTRY_4,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   ENTRY_5,
 };
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define REGION_US_EU_BAND_LOW 87500
 #define REGION_US_EU_BAND_HIGH 108000
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define REGION_JAPAN_STANDARD_BAND_LOW 76000
 #define REGION_JAPAN_STANDARD_BAND_HIGH 90000
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define REGION_JAPAN_WIDE_BAND_LOW 90000
 #define REGION_JAPAN_WIDE_BAND_HIGH 108000
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SRCH_MODE 0x07
 #define SRCH_DIR 0x08
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SCAN_DWELL 0x70
 #define SRCH_ON 0x80
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define IOC_HRD_MUTE 0x03
 #define IOC_SFT_MUTE 0x01
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define IOC_MON_STR 0x01
 #define IOC_SIG_BLND 0x01
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define IOC_INTF_BLND 0x01
 #define IOC_ANTENNA 0x01
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RDS_ON 0x01
 #define RDS_BUF_SZ 100
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RDS_BLOCKS_NUM (4)
 #define BYTES_PER_BLOCK (3)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MAX_PS_LENGTH (108)
 #define MAX_RT_LENGTH (64)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RDS_GRP_CNTR_LEN (36)
 #define RX_RT_DATA_LENGTH (63)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SRCH_DIR_UP (0)
 #define SRCH_DIR_DOWN (1)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SEARCH_RDS_STNS_MODE_OFFSET 4
 #define PARAMS_PER_STATION 0x08
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define STN_NUM_OFFSET 0x01
 #define STN_FREQ_OFFSET 0x02
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define KHZ_TO_MHZ 1000
 #define GET_MSB(x) ((x >> 8) & 0xFF)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define GET_LSB(x) ((x) & 0xFF)
 #define CTRL_ON (1)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define CTRL_OFF (0)
 #define RIVA_PEEK_OPCODE 0x0D
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RIVA_POKE_OPCODE 0x0C
 #define PEEK_DATA_OFSET 0x1
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RIVA_PEEK_PARAM 0x6
 #define RIVA_PEEK_LEN_OFSET 0x6
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SSBI_PEEK_LEN 0x01
 #define PROCS_CALIB_MODE 1
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define PROCS_CALIB_SIZE 23
 #define DC_CALIB_MODE 2
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define DC_CALIB_SIZE 48
 #define RSB_CALIB_MODE 3
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define RSB_CALIB_SIZE 4
 #define CALIB_DATA_OFSET 2
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define CALIB_MODE_OFSET 1
 #define MAX_CALIB_SIZE 75
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define INVALID_CHANNEL (0)
 #define VALID_CHANNEL (1)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct hci_fm_set_cal_req_proc {
   __u8 mode;
-  __u8 data[PROCS_CALIB_SIZE];
-} __attribute__((packed));
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u8 data[PROCS_CALIB_SIZE];
+} __packed;
 struct hci_fm_set_cal_req_dc {
   __u8 mode;
-  __u8 data[DC_CALIB_SIZE];
-} __attribute__((packed));
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u8 data[DC_CALIB_SIZE];
+} __packed;
 struct hci_cc_do_calibration_rsp {
   __u8 status;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 mode;
   __u8 data[MAX_CALIB_SIZE];
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct hci_fm_set_spur_table_req {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u8 mode;
   __u8 no_of_freqs_entries;
+  __u8 spur_data[FM_SPUR_TBL_SIZE];
+} __packed;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  u8 spur_data[FM_SPUR_TBL_SIZE];
-} __attribute__((packed));
 #define SIG_LEVEL_INTR (1 << 0)
 #define RDS_SYNC_INTR (1 << 1)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define AUDIO_CTRL_INTR (1 << 2)
 #define AF_JUMP_ENABLE (1 << 4)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #endif
 

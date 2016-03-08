@@ -77,9 +77,9 @@ struct mdp_input_layer {
   struct mdp_rect src_rect;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   struct mdp_rect dst_rect;
-  struct mdp_scale_data * scale;
+  struct mdp_scale_data __user * scale;
   struct mdp_layer_buffer buffer;
-  void * pp_info;
+  void __user * pp_info;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   int error_code;
   uint32_t reserved[6];
@@ -98,10 +98,10 @@ struct mdp_layer_commit_v1 {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   struct mdp_rect left_roi;
   struct mdp_rect right_roi;
-  struct mdp_input_layer * input_layers;
+  struct mdp_input_layer __user * input_layers;
   uint32_t input_layer_cnt;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  struct mdp_output_layer * output_layer;
+  struct mdp_output_layer __user * output_layer;
   int retire_fence;
   uint32_t reserved[6];
 };
@@ -129,7 +129,7 @@ struct mdp_async_layer {
   uint32_t reserved[3];
 };
 struct mdp_position_update {
-  struct mdp_async_layer * input_layers;
+  struct mdp_async_layer __user * input_layers;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   uint32_t input_layer_cnt;
 };

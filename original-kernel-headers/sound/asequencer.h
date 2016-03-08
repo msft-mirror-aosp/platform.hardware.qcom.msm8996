@@ -19,8 +19,8 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-#ifndef __SOUND_ASEQUENCER_H
-#define __SOUND_ASEQUENCER_H
+#ifndef _UAPI__SOUND_ASEQUENCER_H
+#define _UAPI__SOUND_ASEQUENCER_H
 
 
 /** version of the sequencer */
@@ -337,9 +337,9 @@ struct snd_seq_running_info {
 
 	/* client types */
 typedef int __bitwise snd_seq_client_type_t;
-#define	NO_CLIENT	((snd_seq_client_type_t) 0)
-#define	USER_CLIENT	((snd_seq_client_type_t) 1)
-#define	KERNEL_CLIENT	((snd_seq_client_type_t) 2)
+#define	NO_CLIENT	((__force snd_seq_client_type_t) 0)
+#define	USER_CLIENT	((__force snd_seq_client_type_t) 1)
+#define	KERNEL_CLIENT	((__force snd_seq_client_type_t) 2)
                         
 	/* event filter flags */
 #define SNDRV_SEQ_FILTER_BROADCAST	(1<<0)	/* accept broadcast messages */
@@ -611,4 +611,4 @@ struct snd_seq_query_subs {
 #define SNDRV_SEQ_IOCTL_QUERY_NEXT_CLIENT	_IOWR('S', 0x51, struct snd_seq_client_info)
 #define SNDRV_SEQ_IOCTL_QUERY_NEXT_PORT	_IOWR('S', 0x52, struct snd_seq_port_info)
 
-#endif /* __SOUND_ASEQUENCER_H */
+#endif /* _UAPI__SOUND_ASEQUENCER_H */

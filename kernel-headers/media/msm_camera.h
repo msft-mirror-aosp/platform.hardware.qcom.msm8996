@@ -2027,7 +2027,7 @@ struct msm_camera_v4l2_ioctl_t {
   uint32_t len;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   uint32_t trans_code;
-  void * ioctl_ptr;
+  void __user * ioctl_ptr;
 };
 struct msm_camera_vfe_params_t {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -2087,7 +2087,7 @@ struct msm_camera_irq_cfg {
   uint8_t num_hwcore;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
-#define MSM_IRQROUTER_CFG_COMPIRQ _IOWR('V', BASE_VIDIOC_PRIVATE, void *)
+#define MSM_IRQROUTER_CFG_COMPIRQ _IOWR('V', BASE_VIDIOC_PRIVATE, void __user *)
 #define MAX_NUM_CPP_STRIPS 8
 enum msm_cpp_frame_type {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

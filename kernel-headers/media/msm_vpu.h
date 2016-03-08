@@ -189,10 +189,10 @@ struct vpu_control {
 struct vpu_control_extended {
   __u32 type;
   __u32 data_len;
-  void * data_ptr;
+  void __user * data_ptr;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 buf_size;
-  void * buf_ptr;
+  void __user * buf_ptr;
 };
 struct vpu_control_port {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

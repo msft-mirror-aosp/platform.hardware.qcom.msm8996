@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _LSM_PARAMS_H__
-#define _LSM_PARAMS_H__
+#ifndef _UAPI_LSM_PARAMS_H__
+#define _UAPI_LSM_PARAMS_H__
 #include <linux/types.h>
 #include <sound/asound.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -77,7 +77,7 @@ struct snd_lsm_gain {
 };
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct snd_lsm_sound_model_v2 {
-  __u8 * data;
+  __u8 __user * data;
   __u8 * confidence_level;
   __u32 data_size;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -108,12 +108,12 @@ struct lsm_params_info {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 param_id;
   __u32 param_size;
-  __u8 * param_data;
+  __u8 __user * param_data;
   enum LSM_PARAM_TYPE param_type;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 struct snd_lsm_module_params {
-  __u8 * params;
+  __u8 __user * params;
   __u32 num_params;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 data_size;

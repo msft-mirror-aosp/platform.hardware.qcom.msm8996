@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_VENC_H_
-#define _MSM_VENC_H_
+#ifndef _UAPI_MSM_VENC_H_
+#define _UAPI_MSM_VENC_H_
 #include <linux/types.h>
 #define VENC_MAX_RECON_BUFFERS 2
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

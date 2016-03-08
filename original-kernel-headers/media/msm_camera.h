@@ -2082,7 +2082,7 @@ struct msm_camera_v4l2_ioctl_t {
 	uint32_t id;
 	uint32_t len;
 	uint32_t trans_code;
-	void *ioctl_ptr;
+	void __user *ioctl_ptr;
 };
 
 struct msm_camera_vfe_params_t {
@@ -2155,7 +2155,7 @@ struct msm_camera_irq_cfg {
 };
 
 #define MSM_IRQROUTER_CFG_COMPIRQ \
-	_IOWR('V', BASE_VIDIOC_PRIVATE, void *)
+	_IOWR('V', BASE_VIDIOC_PRIVATE, void __user *)
 
 #define MAX_NUM_CPP_STRIPS 8
 

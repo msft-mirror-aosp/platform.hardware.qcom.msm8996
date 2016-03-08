@@ -1,5 +1,5 @@
-#ifndef _MSM_VDEC_H_
-#define _MSM_VDEC_H_
+#ifndef _UAPI_MSM_VDEC_H_
+#define _UAPI_MSM_VDEC_H_
 
 #include <linux/types.h>
 
@@ -274,4 +274,4 @@ struct vdec_property_info {
 	enum vdec_property_id id;
 	union vdec_property property;
 };
-#endif /* _MSM_VDEC_H_ */
+#endif /* _UAPI_MSM_VDEC_H_ */

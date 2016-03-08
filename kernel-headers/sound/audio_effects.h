@@ -316,7 +316,7 @@ struct pbe_config_t {
   int32_t p1BassShelfCoeffs[5];
   int32_t p1TrebleShelfCoeffs[5];
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __attribute__((packed));
+} __packed;
 struct pbe_params {
   uint32_t device;
   uint32_t enable_flag;

@@ -53,11 +53,13 @@
  *              Hans Verkuil <hverkuil@xs4all.nl>
  *		et al.
  */
-#ifndef __LINUX_VIDEODEV2_H
-#define __LINUX_VIDEODEV2_H
+#ifndef _UAPI__LINUX_VIDEODEV2_H
+#define _UAPI__LINUX_VIDEODEV2_H
 
+#ifndef __KERNEL__
 #include <sys/time.h>
-
+#endif
+#include <linux/compiler.h>
 #include <linux/ioctl.h>
 #include <linux/types.h>
 #include <linux/v4l2-common.h>
@@ -827,16 +829,16 @@ struct v4l2_framebuffer {
 
 struct v4l2_clip {
 	struct v4l2_rect        c;
-	struct v4l2_clip	*next;
+	struct v4l2_clip	__user *next;
 };
 
 struct v4l2_window {
 	struct v4l2_rect        w;
 	__u32			field;	 /* enum v4l2_field */
 	__u32			chromakey;
-	struct v4l2_clip	*clips;
+	struct v4l2_clip	__user *clips;
 	__u32			clipcount;
-	void			*bitmap;
+	void			__user *bitmap;
 	__u8                    global_alpha;
 };
 
@@ -1320,11 +1322,11 @@ struct v4l2_ext_control {
 	union {
 		__s32 value;
 		__s64 value64;
-		char *string;
-		__u8 *p_u8;
-		__u16 *p_u16;
-		__u32 *p_u32;
-		void *ptr;
+		char __user *string;
+		__u8 __user *p_u8;
+		__u16 __user *p_u16;
+		__u32 __user *p_u32;
+		void __user *ptr;
 	};
 } __attribute__ ((packed));
 
@@ -1613,6 +1615,7 @@ struct v4l2_encoder_cmd {
 #define V4L2_DEC_CMD_PAUSE       (2)
 #define V4L2_DEC_CMD_RESUME      (3)
 #define V4L2_DEC_QCOM_CMD_FLUSH  (4)
+#define V4L2_DEC_QCOM_CMD_RECONFIG_HINT  (5)
 
 /* Flags for V4L2_DEC_CMD_START */
 #define V4L2_DEC_CMD_START_MUTE_AUDIO	(1 << 0)
@@ -1907,6 +1910,29 @@ struct v4l2_streamparm {
 #define V4L2_EVENT_MSM_VIDC_MAX_CLIENTS (V4L2_EVENT_MSM_VIDC_START + 9)
 #define V4L2_EVENT_MSM_VIDC_HW_UNSUPPORTED (V4L2_EVENT_MSM_VIDC_START + 10)
 
+#define V4L2_EVENT_MSM_BA_PRIVATE_EVENT_BASE	\
+		(V4L2_EVENT_PRIVATE_START + 0x00005000)
+#define V4L2_EVENT_MSM_BA_START	V4L2_EVENT_MSM_BA_PRIVATE_EVENT_BASE
+#define V4L2_EVENT_MSM_BA_DEVICE_AVAILABLE	(V4L2_EVENT_MSM_BA_START + 1)
+#define V4L2_EVENT_MSM_BA_DEVICE_UNAVAILABLE	\
+		(V4L2_EVENT_MSM_BA_START + 2)
+#define V4L2_EVENT_MSM_BA_PORT_SETTINGS_CHANGED	\
+		(V4L2_EVENT_MSM_BA_START + 3)
+#define V4L2_EVENT_MSM_BA_SIGNAL_IN_LOCK	\
+		(V4L2_EVENT_MSM_BA_START + 4)
+#define V4L2_EVENT_MSM_BA_SIGNAL_LOST_LOCK	\
+		(V4L2_EVENT_MSM_BA_START + 5)
+#define V4L2_EVENT_MSM_BA_SOURCE_CHANGE	\
+		(V4L2_EVENT_MSM_BA_START + 6)
+#define V4L2_EVENT_MSM_BA_HDMI_HPD	\
+		(V4L2_EVENT_MSM_BA_START + 7)
+#define V4L2_EVENT_MSM_BA_HDMI_CEC_MESSAGE	\
+		(V4L2_EVENT_MSM_BA_START + 8)
+#define V4L2_EVENT_MSM_BA_CP	\
+		(V4L2_EVENT_MSM_BA_START + 9)
+#define V4L2_EVENT_MSM_BA_ERROR	\
+		(V4L2_EVENT_MSM_BA_START + 10)
+
 /* Payload for V4L2_EVENT_VSYNC */
 struct v4l2_event_vsync {
 	/* Can be V4L2_FIELD_ANY, _NONE, _TOP or _BOTTOM */
@@ -2162,4 +2188,4 @@ struct v4l2_create_buffers {
 
 #define BASE_VIDIOC_PRIVATE	192		/* 192-255 are private */
 
-#endif /* __LINUX_VIDEODEV2_H */
+#endif /* _UAPI__LINUX_VIDEODEV2_H */

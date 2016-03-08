@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_AUDIO_WMA_H
-#define _MSM_AUDIO_WMA_H
+#ifndef _UAPI_MSM_AUDIO_WMA_H
+#define _UAPI_MSM_AUDIO_WMA_H
 #define AUDIO_GET_WMA_CONFIG _IOR(AUDIO_IOCTL_MAGIC, (AUDIO_MAX_COMMON_IOCTL_NUM + 0), unsigned)
 #define AUDIO_SET_WMA_CONFIG _IOW(AUDIO_IOCTL_MAGIC, (AUDIO_MAX_COMMON_IOCTL_NUM + 1), unsigned)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

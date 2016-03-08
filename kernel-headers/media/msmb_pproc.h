@@ -93,7 +93,7 @@ struct msm_cpp_frame_info_t {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   int dst_fd;
   struct timeval in_time, out_time;
-  void * cookie;
+  void __user * cookie;
   int32_t * status;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   int32_t duplicate_output;
@@ -232,7 +232,7 @@ struct msm_camera_v4l2_ioctl_t {
   size_t len;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   int32_t trans_code;
-  void * ioctl_ptr;
+  void __user * ioctl_ptr;
 };
 #endif
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

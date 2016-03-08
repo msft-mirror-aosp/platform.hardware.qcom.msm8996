@@ -1,5 +1,5 @@
-#ifndef _MSM_VIDC_DEC_H_
-#define _MSM_VIDC_DEC_H_
+#ifndef _UAPI_MSM_VIDC_DEC_H_
+#define _UAPI_MSM_VIDC_DEC_H_
 
 #include <linux/types.h>
 #include <linux/ioctl.h>
@@ -89,8 +89,8 @@
 #define VDEC_IOCTL_MAGIC 'v'
 
 struct vdec_ioctl_msg {
-	void *in;
-	void *out;
+	void __user *in;
+	void __user *out;
 };
 
 /* CMD params: InputParam:enum vdec_codec
@@ -250,7 +250,7 @@ struct vdec_allocatorproperty {
 };
 
 struct vdec_bufferpayload {
-	void *bufferaddr;
+	void __user *bufferaddr;
 	size_t buffer_len;
 	int pmem_fd;
 	size_t offset;
@@ -505,19 +505,19 @@ struct vdec_picsize {
 };
 
 struct vdec_seqheader {
-	void *ptr_seqheader;
+	void __user *ptr_seqheader;
 	size_t seq_header_len;
 	int pmem_fd;
 	size_t pmem_offset;
 };
 
 struct vdec_mberror {
-	void *ptr_errormap;
+	void __user *ptr_errormap;
 	size_t err_mapsize;
 };
 
 struct vdec_input_frameinfo {
-	void *bufferaddr;
+	void __user *bufferaddr;
 	size_t offset;
 	size_t datalen;
 	uint32_t flags;
@@ -525,7 +525,7 @@ struct vdec_input_frameinfo {
 	void *client_data;
 	int pmem_fd;
 	size_t pmem_offset;
-	void *desc_addr;
+	void __user *desc_addr;
 	uint32_t desc_size;
 };
 
@@ -543,7 +543,7 @@ struct vdec_aspectratioinfo {
 };
 
 struct vdec_sep_metadatainfo {
-	void *metabufaddr;
+	void __user *metabufaddr;
 	uint32_t size;
 	int fd;
 	int offset;
@@ -551,7 +551,7 @@ struct vdec_sep_metadatainfo {
 };
 
 struct vdec_output_frameinfo {
-	void *bufferaddr;
+	void __user *bufferaddr;
 	size_t offset;
 	size_t len;
 	uint32_t flags;

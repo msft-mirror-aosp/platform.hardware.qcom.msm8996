@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _MSM_IPC_H_
-#define _MSM_IPC_H_
+#ifndef _UAPI_MSM_IPC_H_
+#define _UAPI_MSM_IPC_H_
 #include <linux/types.h>
 #include <linux/ioctl.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

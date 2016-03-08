@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __SOUND_ASEQUENCER_H
-#define __SOUND_ASEQUENCER_H
+#ifndef _UAPI__SOUND_ASEQUENCER_H
+#define _UAPI__SOUND_ASEQUENCER_H
 #define SNDRV_SEQ_VERSION SNDRV_PROTOCOL_VERSION(1, 0, 1)
 #define SNDRV_SEQ_EVENT_SYSTEM 0
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -256,9 +256,9 @@ struct snd_seq_running_info {
 #define SNDRV_SEQ_CLIENT_OSS 15
 typedef int __bitwise snd_seq_client_type_t;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define NO_CLIENT ((snd_seq_client_type_t) 0)
-#define USER_CLIENT ((snd_seq_client_type_t) 1)
-#define KERNEL_CLIENT ((snd_seq_client_type_t) 2)
+#define NO_CLIENT ((__force snd_seq_client_type_t) 0)
+#define USER_CLIENT ((__force snd_seq_client_type_t) 1)
+#define KERNEL_CLIENT ((__force snd_seq_client_type_t) 2)
 #define SNDRV_SEQ_FILTER_BROADCAST (1 << 0)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define SNDRV_SEQ_FILTER_MULTICAST (1 << 1)

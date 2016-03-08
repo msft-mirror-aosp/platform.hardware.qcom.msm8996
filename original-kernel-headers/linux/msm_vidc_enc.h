@@ -1,5 +1,5 @@
-#ifndef _MSM_VIDC_ENC_H_
-#define _MSM_VIDC_ENC_H_
+#ifndef _UAPI_MSM_VIDC_ENC_H_
+#define _UAPI_MSM_VIDC_ENC_H_
 
 #include <linux/types.h>
 #include <linux/ioctl.h>
@@ -172,8 +172,8 @@
 #define VEN_IOCTLBASE_ENC	0x850
 
 struct venc_ioctl_msg{
-	void *in;
-	void *out;
+	void __user *in;
+	void __user *out;
 };
 
 /*NON ENCODER CONFIGURATION IOCTLs*/
@@ -697,4 +697,4 @@ struct venc_ltruse {
 	unsigned long   ltr_frames;
 };
 
-#endif /* _MSM_VIDC_ENC_H_ */
+#endif /* _UAPI_MSM_VIDC_ENC_H_ */
