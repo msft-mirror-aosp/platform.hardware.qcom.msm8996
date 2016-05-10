@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __LINUX_MSMB_CAMERA_H
-#define __LINUX_MSMB_CAMERA_H
+#ifndef __UAPI_LINUX_MSMB_CAMERA_H
+#define __UAPI_LINUX_MSMB_CAMERA_H
 #include <linux/videodev2.h>
 #include <linux/types.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
