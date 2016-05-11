@@ -16,8 +16,8 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef __MSMB_ISP__
-#define __MSMB_ISP__
+#ifndef __UAPI_MSMB_ISP__
+#define __UAPI_MSMB_ISP__
 #include <linux/videodev2.h>
 #define MAX_PLANES_PER_STREAM 3
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
