@@ -169,6 +169,23 @@ struct msm_camera_user_buf_cont_t {
   unsigned int buf_cnt;
   unsigned int buf_idx[MSM_CAMERA_MAX_USER_BUFF_CNT];
 };
-#endif
+struct msm_camera_return_buf {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u32 index;
+  __u32 reserved;
+};
+#define MSM_CAMERA_PRIV_IOCTL_ID_BASE 0
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_CAMERA_PRIV_IOCTL_ID_RETURN_BUF 1
+struct msm_camera_private_ioctl_arg {
+  __u32 id;
+  __u32 size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u32 result;
+  __u32 reserved;
+  __user __u64 ioctl_ptr;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define VIDIOC_MSM_CAMERA_PRIVATE_IOCTL_CMD _IOWR('V', BASE_VIDIOC_PRIVATE, struct msm_camera_private_ioctl_arg)
+#endif
 
